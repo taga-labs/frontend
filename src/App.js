@@ -9,42 +9,72 @@ import {
 
 import {
     LandingHome
-} from '';
+} from './pages/landing';
 
+// Init app variable
 let App;
 
+// Get domains used in request
 let uri = window.location.host;
+let domainArray = uri.split(".");
 
-App = class AppRouter extends React.Component {
-    constructor(props) {
-        super(props)
+// If requesting 'app' subdomain
+if(domainArray.length > 1 && domainArray[0] == "app") {
+    App = class AppRouter extends React.Component {
+        constructor(props) {
+            super(props)
+        }
+
+        render() {
+            return(
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<LandingHome />} />
+                    </Routes>
+                </BrowserRouter>
+            )
+        }
     }
+} 
 
-    render() {
-        return(
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={} />
-                </Routes>
-            </BrowserRouter>
-        )
+// If arbitrary subdomain requested
+else if(domainArray.length > 1 && domainArray[0] != "app") {
+    App = class LandingRouter extends React.Component {
+        constructor(props) {
+            super(props)
+        }
+
+        render() {
+            return(
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<LandingHome />} />
+                    </Routes>
+                </BrowserRouter>
+            )
+        }
+    }
+} 
+
+//If landing requested
+else {
+    App = class LandingRouter extends React.Component {
+        constructor(props) {
+            super(props)
+        }
+
+        render() {
+            return(
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="*" element={<LandingHome />} />
+                    </Routes>
+                </BrowserRouter>
+            )
+        }
     }
 }
 
-App = class LandingRouter extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return(
-            <BrowserRouter>
-                <Routes>
-                    <Route />
-                </Routes>
-            </BrowserRouter>
-        )
-    }
-}
+console.log(App);
 
 export default App;

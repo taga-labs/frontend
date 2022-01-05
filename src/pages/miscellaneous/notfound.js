@@ -8,7 +8,9 @@ export default class LandingHome extends React.Component {
 
     render() {
         return(
-            <div></div>
+            <div className="container">
+                asd
+            </div>
         )
     }
 }

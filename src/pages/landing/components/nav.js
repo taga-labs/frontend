@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// Stylesheets
+import '../../../assets/styles/layout.css';
+import '../../../assets/styles/color.css';
+import '../../../assets/styles/typography.css';
+
 export default class LandingHome extends React.Component {
     constructor(props) {
         super(props)
@@ -8,7 +13,9 @@ export default class LandingHome extends React.Component {
 
     render() {
         return(
-            <div></div>
+            <div className="container nav">
+
+            </div>
         )
     }
 }
