@@ -1,12 +1,15 @@
+// React imports
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// React router imports
 import {
     BrowserRouter,
     Routes,
     Route
 } from "react-router-dom";
 
+// Page module imports
 import {
     LandingHome
 } from './pages/landing';
@@ -39,7 +42,7 @@ if(domainArray.length > 1 && domainArray[0] == "app") {
 
 // If arbitrary subdomain requested
 else if(domainArray.length > 1 && domainArray[0] != "app") {
-    App = class LandingRouter extends React.Component {
+    App = class MiscRouter extends React.Component {
         constructor(props) {
             super(props)
         }
@@ -48,7 +51,7 @@ else if(domainArray.length > 1 && domainArray[0] != "app") {
             return(
                 <BrowserRouter>
                     <Routes>
-                        <Route path="/" element={<LandingHome />} />
+                        <Route path="*" element={<LandingHome />} />
                     </Routes>
                 </BrowserRouter>
             )
@@ -67,7 +70,7 @@ else {
             return(
                 <BrowserRouter>
                     <Routes>
-                        <Route path="*" element={<LandingHome />} />
+                        <Route path="/" element={<LandingHome />} />
                     </Routes>
                 </BrowserRouter>
             )

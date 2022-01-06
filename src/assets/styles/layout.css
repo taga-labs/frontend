@@ -1,5 +1,5 @@
-/*  */
-.container {
+/* Overall container */
+.container.overall {
     position: absolute;
     top: 0;
     left: 0;
@@ -10,20 +10,63 @@
 /* Navigation bar container */
 .container.nav {
     position: fixed;
-    width: 100vw;
-    top: 0;
-    background-color: red;
-    height: 10vh;
     z-index: 1;
+    height: max-content;
+    width: 100vw;
+    padding: 1vh;
 }
 
+.container.company {
+    width: max-content;
+    display: flex;
+    align-items: center;
+}
+
+.container.links.navigation {
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container.button.navigation {
+    width: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container for nav logo and company name */
+.container.animated.nav {
+    width: 99%;
+    display: flex;
+    height: max-content;
+    animation: 1s ease-out 0s 1 navSlideIn;
+}
+
+/* Page content container */
 .container.content {
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: white;
+}
+
+/* Animations */
+@keyframes navSlideIn {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 /* Mobile Re-scaling */
 @media (max-width: 700px) {
+    .container.nav {
 
+    }
 }

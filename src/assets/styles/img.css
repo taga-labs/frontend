@@ -1,0 +1,12 @@
+.icon {
+    width: 50px;   
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Mobile Re-scaling */
+@media (max-width: 700px) {
+    .icon {
+        width: 30px;
+    }
+}

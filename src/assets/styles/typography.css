@@ -1,0 +1,22 @@
+.text.nav.logo {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3vh;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0.5vw;
+}
+
+.text.nav.links {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2vh;
+    padding: 1vw;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: middle;
+    color: gray;
+}
+
+.text.nav.links:hover {
+    color: black;
+}
