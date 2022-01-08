@@ -4,6 +4,10 @@
     vertical-align: middle;
 }
 
+.main.image {
+    width: 40vw;
+}
+
 /* Mobile Re-scaling */
 @media (max-width: 700px) {
     .icon {

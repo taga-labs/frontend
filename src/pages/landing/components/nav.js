@@ -10,10 +10,11 @@ import '../../../assets/styles/layout.css';
 import '../../../assets/styles/color.css';
 import '../../../assets/styles/typography.css';
 import '../../../assets/styles/img.css';
-import '../../../assets/styles/buttons.css';
+import '../../../assets/styles/interactions.css';
 
 // Images
 import LogoDarkBG from '../../../assets/img/logo-dark-bg.svg';
+import { faChevronDown, faRocket } from '@fortawesome/free-solid-svg-icons';
 
 export default class LandingHome extends React.Component {
     constructor(props) {
@@ -31,13 +32,15 @@ export default class LandingHome extends React.Component {
                         </a>
                     </div>
                     <div className="container links navigation">
+                        <a href="/docs" className="text nav links">Products</a>
                         <a href="/docs" className="text nav links">Docs</a>
-                        <a href="/team" className="text nav links">Team</a>
                         <a href="/docs" className="text nav links">About</a>
                     </div>
                     <div className="container button navigation">
-                        <button className="button nav">
-                            Launch App
+                        <a href="/signin" className="text link signin">Sign In</a>
+                        <button onClick={() => {window.location.href="/get-started"}} className="button nav">
+                            <FontAwesomeIcon icon={faRocket} style={{marginRight: '0.5vw'}} />
+                            Register
                         </button>
                     </div>
                 </div>

@@ -5,6 +5,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden;
 }
 
 /* Navigation bar container */
@@ -14,6 +15,7 @@
     height: max-content;
     width: 100vw;
     padding: 1vh;
+    /* background-color: white; */
 }
 
 .container.company {
@@ -30,9 +32,8 @@
     align-items: center;
 }
 
-
 .container.button.navigation {
-    width: 10vw;
+    padding-right: 2vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,14 +54,37 @@
     background-color: white;
 }
 
+.container.content.centered {
+    width: 75%;
+    height: 100%;
+    margin: 0 auto;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
+    /* background-color: black; */
+}
+
+.container.content.centered.vertical {
+    width: 100%;
+}
+
+.container.interactions.main {
+    width: 100%;
+    display: flex;
+}
+
 /* Animations */
 @keyframes navSlideIn {
     0% {
         transform: translateY(-100%);
+        opacity: 0;
     }
 
     100% {
         transform: translateY(0);
+        opacity: 1;
     }
 }
 

@@ -1,5 +1,5 @@
 .text.nav.logo {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 3vh;
     display: inline-block;
     vertical-align: middle;
@@ -7,7 +7,7 @@
 }
 
 .text.nav.links {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 2vh;
     padding: 1vw;
     text-decoration: none;
@@ -19,4 +19,53 @@
 
 .text.nav.links:hover {
     color: black;
+}
+
+.text.tagline {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 7vh;
+    font-weight: bold;
+    animation: 1s ease-out 0s 1 navSlideIn;
+    display: block;
+}
+
+.text.keyword.tagline {
+    background: linear-gradient(to right, #4F68B1, #AF6AAC);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    animation: 1s ease-out 0s 1 navSlideIn;
+}
+
+.text.link.signin {
+    font-family: 'Source Sans Pro', sans-serif;
+    background: linear-gradient(to right, #4F68B1, #AF6AAC);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    padding-right: 2vw;
+    font-weight: bold;
+    transition: all 0.3s ease 0s;
+}
+
+.text.link.signin:hover {
+    transform: translateY(-5px);
+}
+
+.text.paragraph.main {
+    font-size: 2vh;
+    font-family: 'Source Sans Pro', sans-serif;
+    /* animation: 1s ease-out 0s 1 tagLineSlideIn; */
+    width: 25vw;
+}
+
+/* Animations */
+@keyframes tagLineSlideIn {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

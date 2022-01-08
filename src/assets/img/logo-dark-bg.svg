@@ -3,16 +3,17 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#222729;}
-	.st1{fill:url(#XMLID_3_);}
+	.st0{fill:url(#XMLID_3_);}
+	.st1{fill:#FFFFFF;}
+	.st2{fill:url(#XMLID_4_);}
 </style>
-<path id="XMLID_6_" class="st0" d="M700,1000H300C134.3,1000,0,865.7,0,700V300C0,134.3,134.3,0,300,0h400
-	c165.7,0,300,134.3,300,300v400C1000,865.7,865.7,1000,700,1000z"/>
+<linearGradient id="XMLID_3_" gradientUnits="userSpaceOnUse" x1="0" y1="500" x2="1000" y2="500">
+	<stop  offset="0" style="stop-color:#4F68B1"/>
+	<stop  offset="1" style="stop-color:#7F3F98"/>
+</linearGradient>
+<path id="XMLID_6_" class="st0" d="M783,1000H217C97.2,1000,0,902.8,0,783V217C0,97.2,97.2,0,217,0h566c119.8,0,217,97.2,217,217
+	v566C1000,902.8,902.8,1000,783,1000z"/>
 <g id="XMLID_1_">
-	<linearGradient id="XMLID_3_" gradientUnits="userSpaceOnUse" x1="201.6667" y1="499" x2="799" y2="499">
-		<stop  offset="0" style="stop-color:#21409A"/>
-		<stop  offset="1" style="stop-color:#7F3F98"/>
-	</linearGradient>
 	<path id="XMLID_14_" class="st1" d="M216.7,731c-8.3,0-15,6.8-15,15v12.7c0,8.3,6.8,15,15,15H784c8.3,0,15-6.8,15-15V746
 		c0-8.3-6.8-15-15-15H657.3c-8.3,0-14-6.7-12.8-14.8l48.2-321.7c1.2-8.2-4.5-14.8-12.8-14.8H420c-8.3,0-13.4-6.5-11.3-14.5
 		l20.7-82.2c2-8,10.4-14.5,18.7-14.5h322c8.3,0,15-6.8,15-15v-14c0-8.3-6.8-15-15-15H234c-8.3,0-15.1,6.7-15.1,15l-0.1,14.5
@@ -20,7 +21,11 @@
 		l-13.4,85.9c-1.3,8.2-9.1,14.8-17.3,14.8H216.7z"/>
 </g>
 <g id="XMLID_5_">
-	<path id="XMLID_18_" class="st0" d="M404.7,425.3c-5.5,0-11.1,4.4-12.4,9.8L359.8,564c-1.3,5.3,2.1,9.7,7.6,9.7h237.3
+	<linearGradient id="XMLID_4_" gradientUnits="userSpaceOnUse" x1="359.4812" y1="498.7008" x2="636.5804" y2="498.7008">
+		<stop  offset="0" style="stop-color:#4F68B1"/>
+		<stop  offset="1" style="stop-color:#7F3F98"/>
+	</linearGradient>
+	<path id="XMLID_18_" class="st2" d="M404.7,425.3c-5.5,0-11.1,4.4-12.4,9.8L359.8,564c-1.3,5.3,2.1,9.7,7.6,9.7h237.3
 		c5.5,0,10.7-4.4,11.5-9.9l20.3-130.2c0.8-5.4-3-9.9-8.5-9.8L404.7,425.3z"/>
 </g>
 </svg>
