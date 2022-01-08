@@ -8,6 +8,10 @@
     width: 40vw;
 }
 
+.secondary.image {
+    width: 35vw;
+}
+
 /* Mobile Re-scaling */
 @media (max-width: 700px) {
     .icon {

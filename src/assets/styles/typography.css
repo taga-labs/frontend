@@ -29,6 +29,10 @@
     display: block;
 }
 
+.text.tagline.smaller {
+    font-size: 2.5vh;
+}
+
 .text.keyword.tagline {
     background: linear-gradient(to right, #4F68B1, #AF6AAC);
     -webkit-text-fill-color: transparent;
