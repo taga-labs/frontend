@@ -73,3 +73,15 @@
         opacity: 1;
     }
 }
+
+
+/* Mobile Re-scaling */
+@media (max-width: 700px) {
+    .text.link.signin {
+        display: none;
+    }
+
+    .text.nav.links {
+        display: none;
+    }
+}

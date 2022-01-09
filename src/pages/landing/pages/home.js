@@ -18,6 +18,8 @@ import '../../../assets/styles/typography.css';
 import MainVectorGraphic from '../../../assets/img/taga-main-image.svg';
 import SharePartitioningGraphic from '../../../assets/img/taga-partitioning-image.svg';
 import TokenGenerationGraphic from '../../../assets/img/taga-tokens-image.svg';
+import MarketPlaceGraphic from '../../../assets/img/taga-marketplace-image.svg';
+import PortfolioGraphic from '../../../assets/img/taga-portfolio-image.svg';
 
 
 export default class LandingHome extends React.Component {
@@ -76,7 +78,7 @@ export default class LandingHome extends React.Component {
                 </div>
                 <div className="container content">
                     <div className="container content centered">
-                        <img src={SharePartitioningGraphic} className="secondary image" />
+                        <img src={MarketPlaceGraphic} className="secondary image" />
                         <div className="container content centered vertical">
                             <div style={{paddingLeft: '5vw'}}>
                                 <a className="text tagline">Discover Other Tokens.</a>
@@ -105,7 +107,7 @@ export default class LandingHome extends React.Component {
                                 <button className="button nav">Learn More <FontAwesomeIcon icon={faLongArrowAltRight} /></button>
                             </div>
                         </div>
-                        <img src={SharePartitioningGraphic} className="secondary image" />
+                        <img src={PortfolioGraphic} className="secondary image" />
                     </div>
                 </div>
             </div>
