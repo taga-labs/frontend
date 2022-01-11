@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 // Fontawesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLongArrowAltDown, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown, faArrowUp, faLongArrowAltDown, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 
 // Components
 import Nav from '../components/nav';
@@ -25,46 +25,101 @@ import PortfolioGraphic from '../../../assets/img/taga-portfolio-image.svg';
 export default class LandingHome extends React.Component {
     constructor(props) {
         super(props)
+
+        this.state = {
+            mobileMenu: false
+        };
+
+        // Refs
+        this.LandingSection = React.createRef();
+        this.EquitySection = React.createRef();
+        this.TokenSection = React.createRef();
+        this.MarketPlaceSection = React.createRef();
+        this.PortfolioSection = React.createRef();
+
+        this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
+
+        this.methods = {
+            toggleMobileMenu: this.toggleMobileMenu
+        }
+    }
+
+    toggleMobileMenu() {
+        this.setState({mobileMenu: !this.state.mobileMenu});
+    }
+
+    scrollSectionIntoView(target) {
+        if(target == "equity_section") {
+            this.EquitySection.current.scrollIntoView({
+                behavior: "smooth"
+            });
+        } else if(target == "token_section") {
+            this.TokenSection.current.scrollIntoView({
+                behavior: "smooth"
+            });
+        } else if(target == "marketplace_section") {
+            this.MarketPlaceSection.current.scrollIntoView({
+                behavior: "smooth"
+            });
+        } else if(target == "portfolio_section") {
+            this.PortfolioSection.current.scrollIntoView({
+                behavior: "smooth"
+            });
+        } else if(target == "landing_section") {
+            this.LandingSection.current.scrollIntoView({
+                behavior: "smooth"
+            });
+        }
     }
 
     render() {
         return(
             <div className="container overall">
-                <Nav />
-                <div className="container content">
+                <Nav state={this.state} methods={this.methods} />
+                <div ref={this.LandingSection} className="container content">
                     <div className="container content centered">
                         <div className="container content centered vertical">
-                            <div>
+                            <div style={{width: 'min-content'}}>
                                 <a className="text tagline">Private Equity<br /><span className="text keyword tagline">Democratized.</span></a>
                                 <p className="text paragraph main">
                                     Taga is a mutually beneficial ecosystem where private companies and public capital can interact seamlessly.
                                 </p>
                                 <div className="container interactions main">
-                                    <input className="input main" placeholder="gbelson@hooli.com"></input>
+                                    <input className="input main" placeholder="rhendricks@piper.net"></input>
                                     <button className="button nav">Get Started <FontAwesomeIcon icon={faLongArrowAltRight} /></button>
                                 </div>
                             </div>
                             <img src={MainVectorGraphic} className="main image" />
-                        </div>
-                    </div>
-                </div>
-                <div className="container content">
-                    <div className="container content centered">
-                        <img src={SharePartitioningGraphic} className="secondary image" />
-                        <div className="container content centered vertical">
-                            <div style={{paddingLeft: '5vw'}}>
-                                <a className="text tagline">Partition your equity.</a>
-                                <p className="text tagline smaller">As an existing shareholder, set aside equity to list in our ecosystem, and in its place a token will be deployed.</p>
-                                <p className="text paragraph main" style={{width: '30vw'}}>In doing so, your startup opens up a portion of its equity to retail investors, and your company can attract a more democratized pool of capital.</p>
-                                <button className="button nav">Learn More <FontAwesomeIcon icon={faLongArrowAltRight} /></button>
+                            <div className="container nextButton">
+                                <button onClick={() => {this.scrollSectionIntoView("equity_section")}} className="button next">
+                                    <FontAwesomeIcon icon={faArrowDown} />
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="container content">
+                <div ref={this.EquitySection} className="container content">
                     <div className="container content centered">
                         <div className="container content centered vertical">
-                            <div>
+                            <img src={SharePartitioningGraphic} className="secondary image" />
+                            <div style={{width: 'min-content'}}>
+                                <a className="text tagline">Set aside equity.</a>
+                                <p className="text tagline smaller">As an existing shareholder, set aside equity to list in our ecosystem, and in its place a token will be deployed.</p>
+                                <p className="text paragraph main" style={{width: '30vw'}}>In doing so, your startup opens up a portion of its equity to retail investors, and your company can attract a more democratized pool of capital.</p>
+                                <button className="button nav">Learn More <FontAwesomeIcon icon={faLongArrowAltRight} /></button>
+                            </div>
+                            <div className="container nextButton">
+                                <button onClick={() => {this.scrollSectionIntoView("token_section")}} className="button next">
+                                    <FontAwesomeIcon icon={faArrowDown} />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ref={this.TokenSection} className="container content">
+                    <div className="container content centered">
+                        <div className="container content centered vertical">
+                            <div style={{width: 'min-content'}}>
                                 <a className="text tagline">Generate a Token.</a>
                                 <p className="text tagline smaller" style={{width: '30vw'}}>Through our one-click platform, easily generate a token representing the equity your startup has partitioned.</p>
                                 <p className="text paragraph main" style={{width: '30vw'}}>
@@ -74,13 +129,18 @@ export default class LandingHome extends React.Component {
                             </div>
                         </div>
                         <img src={TokenGenerationGraphic} className="secondary image" />
+                        <div className="container nextButton">
+                            <button onClick={() => {this.scrollSectionIntoView("marketplace_section")}} className="button next">
+                                <FontAwesomeIcon icon={faArrowDown} />
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div className="container content">
+                <div ref={this.MarketPlaceSection} className="container content">
                     <div className="container content centered">
                         <img src={MarketPlaceGraphic} className="secondary image" />
                         <div className="container content centered vertical">
-                            <div style={{paddingLeft: '5vw'}}>
+                            <div style={{paddingLeft: '5vw', width: 'min-content'}}>
                                 <a className="text tagline">Discover Other Tokens.</a>
                                 <p className="text tagline smaller">
                                     As an investor, discover new investment opportunities with massive potential.
@@ -91,9 +151,14 @@ export default class LandingHome extends React.Component {
                                 <button className="button nav">Learn More <FontAwesomeIcon icon={faLongArrowAltRight} /></button>
                             </div>
                         </div>
+                        <div className="container nextButton">
+                            <button onClick={() => {this.scrollSectionIntoView("portfolio_section")}} className="button next">
+                                <FontAwesomeIcon icon={faArrowDown} />
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div className="container content">
+                <div ref={this.PortfolioSection} className="container content">
                     <div className="container content centered">
                         <div className="container content centered vertical">
                             <div>
@@ -108,8 +173,19 @@ export default class LandingHome extends React.Component {
                             </div>
                         </div>
                         <img src={PortfolioGraphic} className="secondary image" />
+                        <div className="container nextButton">
+                            <button onClick={() => {this.scrollSectionIntoView("landing_section")}} className="button next">
+                                <FontAwesomeIcon icon={faArrowUp} />
+                            </button>
+                        </div>
                     </div>
                 </div>
+                {(this.state.mobileMenu) ? <div className="backdrop container"></div> : <div></div>}
+                <footer>
+                    <div className="container footer interior">
+
+                    </div>
+                </footer>
             </div>
         )
     }

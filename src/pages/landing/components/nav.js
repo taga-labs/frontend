@@ -14,11 +14,11 @@ import '../../../assets/styles/interactions.css';
 
 // Images
 import LogoDarkBG from '../../../assets/img/logo-dark-bg.svg';
-import { faChevronDown, faRocket } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faChevronDown, faHamburger, faRocket } from '@fortawesome/free-solid-svg-icons';
 
 export default class LandingHome extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     render() {
@@ -42,8 +42,25 @@ export default class LandingHome extends React.Component {
                             <FontAwesomeIcon icon={faRocket} style={{marginRight: '0.5vw'}} />
                             Register
                         </button>
+                        <button onClick={() => { this.props.methods.toggleMobileMenu() }} className="button hamburger">
+                            <FontAwesomeIcon icon={faBars} />
+                        </button>
                     </div>
                 </div>
+                {/* <div className="container menu mobile nav">
+                    <a href="/docs" className="text nav links">Products</a>
+                    <br />
+                    <a href="/docs" className="text nav links">Docs</a>
+                    <br />
+                    <a href="/docs" className="text nav links">About</a>
+                    <br />
+                    <a href="/signin" className="text link signin">Sign In</a>
+                    <br />
+                    <button onClick={() => {window.location.href="/get-started"}} className="button nav">
+                        <FontAwesomeIcon icon={faRocket} style={{marginRight: '0.5vw'}} />
+                        Register
+                    </button>
+                </div> */}
             </div>
         )
     }
