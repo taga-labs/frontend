@@ -19,6 +19,18 @@ import { faBars, faChevronDown, faHamburger, faRocket } from '@fortawesome/free-
 export default class LandingHome extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            mobileRescale: window.matchMedia("(max-width: 700px)").matches
+        };
+    }
+
+    componentDidMount() {
+        const mobileRescaleHandler = (e) => {
+            this.setState({mobileRescale: e.matches});
+        }
+
+        window.matchMedia("(max-width: 700px)").addEventListener('change', mobileRescaleHandler);
     }
 
     render() {
@@ -38,10 +50,10 @@ export default class LandingHome extends React.Component {
                     </div>
                     <div className="container button navigation">
                         <a href="/signin" className="text link signin">Sign In</a>
-                        <button onClick={() => {window.location.href="/get-started"}} className="button nav">
+                        {(!this.state.mobileRescale) ? <button onClick={() => {window.location.href="/get-started"}} className="button nav">
                             <FontAwesomeIcon icon={faRocket} style={{marginRight: '0.5vw'}} />
                             Register
-                        </button>
+                        </button> : <></>}
                         <button onClick={() => { this.props.methods.toggleMobileMenu() }} className="button hamburger">
                             <FontAwesomeIcon icon={faBars} />
                         </button>

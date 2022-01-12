@@ -58,12 +58,15 @@
 /* Mobile Re-scaling */
 @media (max-width: 700px) {
     .button.nav {
-        display: none;
+        font-size: 1vh;
+        padding: none;
+        box-shadow: none;
     }
 
     .button.hamburger {
         visibility: visible;
-        margin-right: 5vw;
+        font-size: 3vh;
+        color: #4F68B1;
     }
 
     .button.next {

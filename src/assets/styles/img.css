@@ -17,4 +17,14 @@
     .icon {
         width: 30px;
     }
+
+    .main.image {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .secondary.image {
+        margin: 0 auto;
+        width: 100%;
+    }
 }
