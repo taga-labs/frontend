@@ -259,7 +259,7 @@ export default class LandingHome extends React.Component {
                             <a href="https://github.com/tagalabs" className="text footer link">Github</a>
                             <br />
                             <br />
-                            <a href="blog" className="text footer link">Blog</a>
+                            <a href="blog" className="text footer link">Our Blog</a>
                         </div>
                     </div>
                     <br />
