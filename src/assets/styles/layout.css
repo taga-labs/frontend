@@ -131,6 +131,13 @@
     width: min-content;
 }
 
+.container.about.content {
+    width: 50vw;
+    margin: 0 auto;
+    padding-top: 30vh;
+    text-align: center;
+}
+
 /* Animations */
 @keyframes navSlideIn {
     0% {

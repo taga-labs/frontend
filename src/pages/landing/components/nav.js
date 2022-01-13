@@ -44,9 +44,9 @@ export default class LandingHome extends React.Component {
                         </a>
                     </div>
                     <div className="container links navigation">
-                        <a href="/docs" className="text nav links">Products</a>
+                        <a href="/products" className="text nav links">Products</a>
                         <a href="/docs" className="text nav links">Docs</a>
-                        <a href="/docs" className="text nav links">About</a>
+                        <a href="/about" className="text nav links">About</a>
                     </div>
                     <div className="container button navigation">
                         <a href="/signin" className="text link signin">Sign In</a>

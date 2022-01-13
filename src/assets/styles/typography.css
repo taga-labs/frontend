@@ -9,7 +9,7 @@
 .text.nav.links {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 2vh;
-    padding-left: 4vw;
+    padding-left: 3vw;
     text-decoration: none;
     display: inline-block;
     vertical-align: middle;
@@ -75,6 +75,15 @@
     text-decoration: none;
     color: gray;
 }
+
+.text.paragraph.about {
+    font-size: 2vh;
+    width: 50%;
+    margin: 0 auto;
+    font-family: 'Source Sans Pro', sans-serif;
+    /* animation: 1s ease-out 0s 1 tagLineSlideIn; */
+}
+
 
 /* Animations */
 @keyframes tagLineSlideIn {
