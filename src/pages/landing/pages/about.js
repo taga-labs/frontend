@@ -38,12 +38,12 @@ export default class LandingAbout extends React.Component {
                 <Nav state={this.state} page={"about"} methods={this.methods} />
                 <div className="container content">
                     <div className="container about content">
-                        <a className="text tagline">We design and build <span className="text keyword tagline">world-class</span> financial tools for the <span className="text keyword tagline">people.</span></a>
+                        <a className="text tagline">We design and build <span className="text keyword tagline">world-class</span> <br/>financial tools for the <span className="text keyword tagline">people.</span></a>
                         <br />
                         <br />
                         <br />
                         <br />
-                        <p className="text paragraph about">We believe the opportunity to be a part of the future should be open to anyone regardless of net-worth, physical location, or other traditional restriction.</p>
+                        <p className="text paragraph about">The opportunity to be a part of the future should be open to anyone regardless of net-worth, physical location, or other traditional restriction.</p>
                         <br />
                         <br />
                         <br />
@@ -62,9 +62,26 @@ export default class LandingAbout extends React.Component {
                                 </a>
                             </div>
                             <div className="container value about">
-                                <a className="text tagline smaller">Effort.</a>
+                                <a className="text tagline smaller">Simplicity.</a>
+                                <br />
                                 <a className="text paragraph main">
-                                    
+                                    We at Taga believe that for financial tools to truly be democratized, they must appeal to the lowest denominator by default. 
+                                </a>
+                            </div>
+                        </div>
+                        <div className="container about values">
+                            <div className="container value about">
+                                <a className="text tagline smaller">Team.</a>
+                                <br />
+                                <a className="text paragraph main">
+                                    Behind every succesful product, company, or project is a well-knit team who truly believe in bringing something new to the world.
+                                </a>
+                            </div>
+                            <div className="container value about">
+                                <a className="text tagline smaller">Compromise.</a>
+                                <br />
+                                <a className="text paragraph main">
+                                   Finance is an industry that has been centralized for far too long. We are committed to bridging the gap between traditional financial systems and the emerging decentralized financial space.
                                 </a>
                             </div>
                         </div>

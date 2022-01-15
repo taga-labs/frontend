@@ -91,6 +91,21 @@
     margin: 0 auto;
 }
 
+.text.signin.header {
+    font-size: 5vh;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bold;
+}
+
+.text.under.signin {
+    font-size: 2vh;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.text.under.signin.link {
+    font-size: 2vh;
+    font-family: 'Source Sans Pro', sans-serif;
+}
 
 /* Animations */
 @keyframes tagLineSlideIn {

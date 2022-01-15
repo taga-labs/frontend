@@ -55,6 +55,25 @@
     position: relative;
 }
 
+.container.content.half {
+    width: 50%;
+    display: inline-block;
+    border-top-right-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+    vertical-align: top;
+}
+
+.container.content.half.inner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#signin-half {
+    background: linear-gradient(to right, #4F68B1, #AF6AAC);
+}
+
 .container.content.centered {
     width: 75%;
     height: max-content;
@@ -149,6 +168,10 @@
 .container.value.about {
     width: 45%;
     text-align: left;
+}
+
+.container.signin.form {
+    width: 50%;
 }
 
 /* Animations */

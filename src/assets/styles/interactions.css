@@ -55,6 +55,41 @@
     transform: translateY(-5px);
 }
 
+.button.signin {
+    padding: 2vh;
+    font-size: 2vh;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: linear-gradient(to right, #4F68B1, #AF6AAC);
+    color: white;
+    border-radius: 100vh;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    width: 100%;
+}
+
+.button.signin:hover {
+    transform: translateY(-5px);
+}
+
+.input.signin {
+    border: none;
+    padding-bottom: 2vh;
+    padding-top: 2vh;
+    width: 100%;
+    font-size: 2vh;
+    border-radius: 2vh;
+    outline: none;
+}
+
+.input.signin:focus {
+    border-image-source: linear-gradient(to right, #4F68B1, #AF6AAC);
+    border-width: 5pt;
+    border-image-slice: 1;
+}
+
 /* Mobile Re-scaling */
 @media (max-width: 700px) {
     .button.nav {

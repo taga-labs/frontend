@@ -16,7 +16,8 @@ import {
 } from './pages/landing';
 
 import {
-
+    SignIn,
+    Registration
 } from './pages/application';
 
 // Init app variable
@@ -57,6 +58,8 @@ else if(domainArray.length > 1 && domainArray[0] != "app") {
                 <BrowserRouter>
                     <Routes>
                         <Route path="*" element={<LandingAbout />} />
+                        <Route path="/signin" element={<SignIn />} />
+                        <Route path="/registration" element={<Registration />} />
                     </Routes>
                 </BrowserRouter>
             )
@@ -77,13 +80,13 @@ else {
                     <Routes>
                         <Route path="/" element={<LandingHome />} />
                         <Route path="/about" element={<LandingAbout />} />
+                        <Route path="/signin" element={<SignIn />} />
+                        <Route path="/registration" element={<Registration />} />
                     </Routes>
                 </BrowserRouter>
             )
         }
     }
 }
-
-console.log(App);
 
 export default App;
