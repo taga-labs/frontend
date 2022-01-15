@@ -11,7 +11,6 @@ import Nav from '../components/nav';
 
 // Stylesheets
 import '../../../assets/styles/layout.css';
-import '../../../assets/styles/color.css';
 import '../../../assets/styles/typography.css';
 
 // Images

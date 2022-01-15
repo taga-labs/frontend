@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Stylesheets
 import '../../../assets/styles/layout.css';
-import '../../../assets/styles/color.css';
 import '../../../assets/styles/typography.css';
 import '../../../assets/styles/img.css';
 import '../../../assets/styles/interactions.css';

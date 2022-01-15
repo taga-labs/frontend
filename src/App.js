@@ -15,6 +15,10 @@ import {
     LandingAbout
 } from './pages/landing';
 
+import {
+
+} from './pages/application';
+
 // Init app variable
 let App;
 

@@ -7,7 +7,7 @@ import '../../../assets/styles/typography.css';
 import '../../../assets/styles/interactions.css';
 import '../../../assets/styles/img.css';
 
-export default class Portfolio extends React.Component {
+export default class SignIn extends React.Component {
     constructor(props) {
         super(props)
     }

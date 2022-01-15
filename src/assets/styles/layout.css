@@ -132,10 +132,23 @@
 }
 
 .container.about.content {
-    width: 50vw;
+    width: 55vw;
     margin: 0 auto;
     padding-top: 30vh;
     text-align: center;
+}
+
+.container.about.values {
+    width: 80%;
+    height: 30vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container.value.about {
+    width: 45%;
+    text-align: left;
 }
 
 /* Animations */

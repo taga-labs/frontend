@@ -38,7 +38,8 @@
     background: linear-gradient(to right, #4F68B1, #AF6AAC);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-    animation: 1s ease-out 0s 1 navSlideIn;
+    /* animation: 1s ease-out 0s 1 navSlideIn; */
+    display: inline-block;
 }
 
 .text.link.signin {
@@ -78,10 +79,16 @@
 
 .text.paragraph.about {
     font-size: 2vh;
-    width: 50%;
+    width: 70%;
+    color: gray;
     margin: 0 auto;
     font-family: 'Source Sans Pro', sans-serif;
     /* animation: 1s ease-out 0s 1 tagLineSlideIn; */
+}
+
+.text.about.tagline.smaller {
+    font-size: 3.5vh;
+    margin: 0 auto;
 }
 
 
