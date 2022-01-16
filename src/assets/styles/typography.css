@@ -4,6 +4,9 @@
     display: inline-block;
     vertical-align: middle;
     margin-left: 0.5vw;
+    background: linear-gradient(to right, #4F68B1, #AF6AAC);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
 .text.nav.links {

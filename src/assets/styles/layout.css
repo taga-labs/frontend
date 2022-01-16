@@ -55,6 +55,11 @@
     position: relative;
 }
 
+.container.main.about {
+    width: 100%;
+    background-color: white;
+}
+
 .container.content.half {
     width: 50%;
     display: inline-block;
@@ -171,7 +176,34 @@
 }
 
 .container.signin.form {
-    width: 50%;
+    width: 55%;
+}
+
+.container.onboarding {
+    width: 75vw;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+}
+
+.container.onboarding.content {
+    width: 100%;
+    height: 10vh;
+}
+
+.container.steps {
+    width: 100%;
+    display: flex;
+}
+
+.step.container {
+    flex: 1;
+    background-color: black;
+
+}
+
+.step.container.completed {
+
 }
 
 /* Animations */

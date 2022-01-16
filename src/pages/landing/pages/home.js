@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 // Fontawesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faArrowUp, faCopyright, faLongArrowAltDown, faLongArrowAltRight, faRocket } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faInstagram, faReddit, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 // Components
 import Nav from '../components/nav';
@@ -19,8 +20,6 @@ import SharePartitioningGraphic from '../../../assets/img/taga-partitioning-imag
 import TokenGenerationGraphic from '../../../assets/img/taga-tokens-image.svg';
 import MarketPlaceGraphic from '../../../assets/img/taga-marketplace-image.svg';
 import PortfolioGraphic from '../../../assets/img/taga-portfolio-image.svg';
-import { faFacebook, faInstagram, faReddit, faYoutube } from '@fortawesome/free-brands-svg-icons';
-
 
 export default class LandingHome extends React.Component {
     constructor(props) {

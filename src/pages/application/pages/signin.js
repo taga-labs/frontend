@@ -21,6 +21,7 @@ export default class SignIn extends React.Component {
 
         this.onIdentifierChange = this.onIdentifierChange.bind(this);
         this.onPasswordChange = this.onPasswordChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     onIdentifierChange(e) {
@@ -33,6 +34,10 @@ export default class SignIn extends React.Component {
         const value = e.target.value;
 
         this.setState({password: value});
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
     }
 
     render() {
