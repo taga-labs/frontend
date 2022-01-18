@@ -116,9 +116,9 @@ export default class LandingHome extends React.Component {
                         <div className="container content centered vertical">
                             <img src={SharePartitioningGraphic} className="secondary image" />
                             <div className="container text main">
-                                <a className="text tagline">Set aside equity.</a>
-                                <p className="text tagline smaller">As an existing shareholder, set aside equity to list in our ecosystem, and in its place a token will be deployed.</p>
-                                <p className="text paragraph main" >In doing so, your startup opens up a portion of its equity to retail investors, and your company can attract a more democratized pool of capital.</p>
+                                <a className="text tagline">List your equity.</a>
+                                <p className="text tagline smaller">As a startup owner or shareholder, set aside equity to list in our ecosystem, and in its place a token will be deployed.</p>
+                                <p className="text paragraph main" >In doing so, the equity will open up to retail investors, where you can get liquidity for you shares and continue to benefit.</p>
                                 <button className="button nav">Learn More <FontAwesomeIcon icon={faLongArrowAltRight} /></button>
                             </div>
                             <div className="container nextButton">
