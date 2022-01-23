@@ -7,18 +7,6 @@ import '../../../../assets/styles/typography.css';
 import '../../../../assets/styles/interactions.css';
 import '../../../../assets/styles/img.css';
 
-class Step extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return(
-            <div></div>
-        )
-    }
-}
-
 export default class StepNav extends React.Component {
     constructor(props) {
         super(props)
@@ -26,11 +14,33 @@ export default class StepNav extends React.Component {
         this.currentStep = this.props.currentStep;
     }
 
+    componentDidMount() {
+
+    }
+
     render() {
         return(
             <div className="container steps">
                 <div className="step container">
-                                
+                    <div className={(this.currentStep == 1 || this.currentStep == 2 || this.currentStep == 3 || this.currentStep == 4) ? "step container interior selected" : "step container interior"}>
+                        <a className={(this.currentStep == 1 || this.currentStep == 2 || this.currentStep == 3 || this.currentStep == 4) ? "text step header selected" : "text step header"}>Step One</a>
+                        <br />
+                        <a className="text step header under">Create an account.</a>
+                    </div>
+                </div>
+                <div className="step container">
+                    <div className={(this.currentStep == 2 || this.currentStep == 3 || this.currentStep == 4) ? "step container interior selected" : "step container interior"}>
+                        <a className={(this.currentStep == 2 || this.currentStep == 3 || this.currentStep == 4) ? "text step header selected" : "text step header"}>Step Two</a>
+                        <br />
+                        <a className="text step header under">Connect to web3.</a>
+                    </div>
+                </div>
+                <div className="step container">
+                    <div className={(this.currentStep == 3 || this.currentStep == 4) ? "step container interior selected" : "step container interior"}>
+                        <a className="text step header">Step Three</a>
+                        <br />
+                        <a className="text step header under">Add banking information (optional)</a>
+                    </div>
                 </div>
             </div>
         )

@@ -57,9 +57,12 @@ else if(domainArray.length > 1 && domainArray[0] != "app") {
             return(
                 <BrowserRouter>
                     <Routes>
-                        <Route path="*" element={<LandingAbout />} />
+                        <Route path="/" element={<LandingHome />} />
+                        <Route path="/about" element={<LandingAbout />} />
                         <Route path="/signin" element={<SignIn />} />
-                        <Route path="/registration" element={<Registration />} />
+                        <Route path="/get-started" element={<Registration />}>
+                            <Route path=":step" element={<Registration />} />
+                        </Route>
                     </Routes>
                 </BrowserRouter>
             )

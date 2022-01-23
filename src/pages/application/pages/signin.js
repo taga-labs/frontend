@@ -61,8 +61,8 @@ export default class SignIn extends React.Component {
                                 <a className="text signin header">Let's Get You Signed In.</a>
                                 <br />
                                 <br />
-                                <form onSubmit={this.handleSubmit} style={{textAlign: 'center'}}>
-                                    <input onChange={this.onIdentifierChange} placeholder={"email or username"} className="input signin" />
+                                <form onSubmit={this.handleSubmit} style={{textAlign: 'center', width: '100%'}}>
+                                    <input autoFocus onChange={this.onIdentifierChange} placeholder={"email or username"} className="input signin" />
                                     <br />
                                     <br />
                                     <input onChange={this.onPasswordChange} placeholder={"password"} type="password" className="input signin" />

@@ -12,11 +12,21 @@ import {
     SessionCreateRegistration
 } from '../../../api/index';
 
+import {
+    StepOne
+} from '../components';
+
 // Stylesheets
 import '../../../assets/styles/layout.css';
 import '../../../assets/styles/typography.css';
 import '../../../assets/styles/interactions.css';
 import '../../../assets/styles/img.css';
+
+// Images
+import LogoDarkBG from '../../../assets/img/logo-dark-bg.svg';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faLongArrowAltLeft, faLongArrowAltRight, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 // Components
 import {
@@ -32,9 +42,16 @@ class Registration extends React.Component {
             data: {
                 stepOne: {
                     email: null,
-                    password: null
+                    password: null,
+                    type: null
                 }
             }
+        }
+
+        this.nextStep = this.nextStep.bind(this);
+
+        this.functions = {
+            nextStep: this.nextStep
         }
     }
 
@@ -80,15 +97,25 @@ class Registration extends React.Component {
         this.setState(currentRegistration);
     }
 
+    nextStep(direction, info) {
+        console.log(direction)
+    }
+
     render() {
         return(
-            <div className="container overall">
+            <div className="container overall" style={{overflow: 'hidden'}}>
                 <div className="container content">
+                    <div className="long logo container">
+                        <div className="container company">
+                            <a href="/" style={{textDecoration: 'none', color: 'black'}}>
+                                <img src={LogoDarkBG} className="icon" />
+                                <a className="text nav logo">Taga</a>
+                            </a>
+                        </div>
+                    </div>
                     <div className="container onboarding">
                         <StepNav currentStep={this.state.currentStep} />
-                        <div className="container onboarding content">
-
-                        </div>
+                        {(this.state.currentStep == 1) ? <StepOne functions={this.functions} /> : <></>}
                     </div>
                 </div>
             </div>

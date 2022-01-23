@@ -12,6 +12,10 @@
     width: 35vw;
 }
 
+.icon.account.type {
+    width: 12vw;
+}
+
 /* Mobile Re-scaling */
 @media (max-width: 700px) {
     .icon {
