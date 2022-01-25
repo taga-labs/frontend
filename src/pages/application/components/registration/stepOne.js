@@ -25,6 +25,90 @@ import InvestorGraphic from '../../../../assets/img/investor-graphic.svg';
 import ShareholderGraphic from '../../../../assets/img/shareholder-graphic.svg';
 import StartupGraphic from '../../../../assets/img/startup-graphic.svg';
 
+class AdditionalQuestionsStartup extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return(
+            <div className="container onboarding content">
+                <div className="container onboarding content interior">
+                    <div className="container account types">
+                        <a className="text signin header">Additional questions for <span className="text signin header keyword">existing shareholders.</span></a>
+                        <br />
+                        <br />
+                        <br />
+                    </div>
+                </div>
+                <div className="container onboarding footer content">
+                    <div style={{width: '100%', display: 'flex', justifyContent: 'space-between'}}>
+                        <a onClick={() => {this.props.functions.NextSection(false, this.props.state.accountInfo)}} className="text signin link"><FontAwesomeIcon icon={faLongArrowAltLeft} color={"#4F68B1"} /> Back to Account Type</a>
+                        <a onClick={this.nextStep} className="text signin link">Carry On <FontAwesomeIcon icon={faLongArrowAltRight} color={"#AF6AAC"} /></a>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+class AdditionalQuestionsShareholder extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return(
+            <div className="container onboarding content">
+                <div className="container onboarding content interior">
+                    <div className="container account types">
+                        <a className="text signin header">Additional questions for <span className="text signin header keyword">existing shareholders.</span></a>
+                        <br />
+                        <br />
+                        <br />
+                    </div>
+                </div>
+                <div className="container onboarding footer content">
+                    <div style={{width: '100%', display: 'flex', justifyContent: 'space-between'}}>
+                        <a onClick={() => {this.props.functions.NextSection(false, this.props.state.accountInfo)}} className="text signin link"><FontAwesomeIcon icon={faLongArrowAltLeft} color={"#4F68B1"} /> Back to Account Type</a>
+                        <a onClick={this.nextStep} className="text signin link">Carry On <FontAwesomeIcon icon={faLongArrowAltRight} color={"#AF6AAC"} /></a>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+class AdditionalQuestions extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            currentSlide: 0
+        }
+
+    }
+
+    componentDidUpdate() {
+        console.log(this.props.state)
+    }
+
+    render() {
+        return(
+            <Carousel
+                showArrows={false}
+                showStatus={false}
+                swipeable={false}
+                showThumbs={false}
+                selectedItem={this.state.currentSlide}
+            >
+                <AdditionalQuestionsShareholder state={this.props.state} functions={this.props.functions} />
+                {/* {(this.props.state.type.) ? <AdditionalQuestionsStartup state={this.props.state} functions={this.props.functions}/>} */}
+            </Carousel>
+        )
+    }
+}
+
 class AccountType extends React.Component {
     constructor(props) {
         super(props)
@@ -37,6 +121,10 @@ class AccountType extends React.Component {
 
         this.setType = this.setType.bind(this);
         this.nextStep = this.nextStep.bind(this);
+    }
+
+    componentDidUpdate() {
+        console.log(this.props.state)
     }
 
     setType(type) {
@@ -56,7 +144,9 @@ class AccountType extends React.Component {
             types: this.state
         }
 
-        this.props.functions.nextStep(true, "step_one", obj)
+        if(this.state.company || this.state.investor || this.state.shareholder) {
+            this.props.functions.NextSection(true, obj);
+        }
     }
 
     render() {
@@ -64,7 +154,7 @@ class AccountType extends React.Component {
             <div className="container onboarding content">
                 <div className="container onboarding content interior">
                     <div className="container account types">
-                        <a className="text signin header">What kind of user are you?</a>
+                        <a className="text signin header">What kind of <span className="text signin header keyword">user</span> are you?</a>
                         <br />
                         <br />
                         <br />
@@ -134,10 +224,6 @@ class CreateAccount extends React.Component {
         this.onFocus = this.onFocus.bind(this);
     }
 
-    componentDidMount() {
-        console.log(this.state.passwordCheck)
-    }
-
     onIdentifierChange(e) {
         const value = e.target.value;
 
@@ -172,7 +258,8 @@ class CreateAccount extends React.Component {
         // if(this.state.idCheck && this.state.passwordCheck) {
             var obj = {
                 identifier: this.state.identifier,
-                password: this.state.password1
+                password: this.state.password1,
+                type: null
             }
 
             var lengthCheck = (obj.password.length > 8);
@@ -255,7 +342,9 @@ export default class StepOne extends React.Component {
             accountInfo: {
                 identifier: null,
                 password: null,
-                type: null
+                type: null,
+                shareholderInfo: null,
+                startupInfo: null
             }
         }
 
@@ -283,6 +372,7 @@ export default class StepOne extends React.Component {
                 >
                     <CreateAccount state={this.state} functions={this.functions} />
                     <AccountType state={this.state} functions={this.functions} />
+                    <AdditionalQuestions state={this.state} functions={this.functions} />
                 </Carousel>
             </div>
         )
