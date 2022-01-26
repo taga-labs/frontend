@@ -7,7 +7,7 @@ import {
 import {
     createAccount as AuthenticationCreateAccount,
     checkAuthentication as AuthenticationCheck
-} from './modules/authentication';
+} from './modules/rest/authentication';
 
 export {
     SessionGetRegistration,

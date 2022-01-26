@@ -1,9 +1,14 @@
-import StepNav from './registration/stepNav';
-import StepOne from './registration/stepOne';
-import Nav from './general/nav';
+import RegistrationStepNav from './registration/stepNav';
+import RegistrationStepOne from './registration/stepOne';
+import RegistrationStepTwo from './registration/stepTwo';
+import RegistrationStepThree from './registration/stepThree';
+
+import AppNav from './general/nav';
 
 export {
-    StepNav,
-    StepOne,
-    Nav
+    RegistrationStepNav,
+    RegistrationStepOne,
+    RegistrationStepTwo,
+    RegistrationStepThree,
+    AppNav
 }

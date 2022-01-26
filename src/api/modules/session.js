@@ -8,7 +8,8 @@ function createRegistration() {
         data: {
             stepOne: {
                 email: null,
-                password: null
+                password: null,
+                type: null
             }
         }
     }

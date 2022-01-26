@@ -84,9 +84,7 @@ else {
                         <Route path="/" element={<LandingHome />} />
                         <Route path="/about" element={<LandingAbout />} />
                         <Route path="/signin" element={<SignIn />} />
-                        <Route path="/get-started" element={<Registration />}>
-                            <Route path=":step" element={<Registration />} />
-                        </Route>
+                        <Route path="/get-started" element={<Registration />} />
                     </Routes>
                 </BrowserRouter>
             )

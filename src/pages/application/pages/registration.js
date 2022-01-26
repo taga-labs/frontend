@@ -9,18 +9,19 @@ import {
 
 import {
     SessionGetRegistration,
-    SessionCreateRegistration
+    SessionCreateRegistration,
+    SessionModifyRegistration
 } from '../../../api/index';
 
-import {
-    StepOne
-} from '../components';
+// Carousel module
+import { Carousel } from 'react-responsive-carousel';
 
 // Stylesheets
 import '../../../assets/styles/layout.css';
 import '../../../assets/styles/typography.css';
 import '../../../assets/styles/interactions.css';
 import '../../../assets/styles/img.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 // Images
 import LogoDarkBG from '../../../assets/img/logo-dark-bg.svg';
@@ -30,7 +31,10 @@ import { faCheckCircle, faLongArrowAltLeft, faLongArrowAltRight, faCheck, faTime
 
 // Components
 import {
-    StepNav
+    RegistrationStepNav as StepNav,
+    RegistrationStepOne as StepOne,
+    RegistrationStepTwo as StepTwo,
+    RegistrationStepThree as StepThree
 } from '../components';
 
 class Registration extends React.Component {
@@ -38,12 +42,16 @@ class Registration extends React.Component {
         super(props)
 
         this.state = {
-            currentStep: 1,
+            currentStep: 0,
             data: {
                 stepOne: {
-                    email: null,
-                    password: null,
-                    type: null
+                    identifier: null,
+                    password: null
+                },
+                stepTwo: {
+                    type: null,
+                    shareholderInfo: null,
+                    companyInfo: null
                 }
             }
         }
@@ -55,50 +63,10 @@ class Registration extends React.Component {
         }
     }
 
-    componentDidMount() {
-        var currentRegistration = SessionGetRegistration();
+    nextStep(direction, data, step) {
+        var incStep = (direction) ? this.state.currentStep+1 : this.state.currentStep-1;
 
-        var acceptedSteps = ["step-one", "step-two", "step-three", "step-four"];
-
-        if(!this.props.params.step) {
-            if(currentRegistration) {
-                var redirectURL = (currentRegistration.currentStep == 1 ?
-                    "step-one" : (currentRegistration.currentStep == 2) ?
-                    "step-two" : (currentRegistration.currentStep == 3) ?
-                    "step-three" : (currentRegistration.currentStep == 4) ? 
-                    "step-four" : "step-one"
-                );
-
-                if(redirectURL != this.props.location.pathname.replace("/get-started/", "")) {
-                    window.location.href = "/get-started/" + redirectURL;
-                }
-            } else {
-                SessionCreateRegistration();
-                window.location.href = "/get-started/step-one";
-            }
-        } else {
-            if(currentRegistration) {
-                var redirectURL = (currentRegistration.currentStep == 1 ?
-                    "step-one" : (currentRegistration.currentStep == 2) ?
-                    "step-two" : (currentRegistration.currentStep == 3) ?
-                    "step-three" : (currentRegistration.currentStep == 4) ? 
-                    "step-four" : "step-one"
-                );
-
-                if(redirectURL != this.props.location.pathname.replace("/get-started/", "")) {
-                    window.location.href = "/get-started/" + redirectURL;
-                }
-            } else {
-                SessionCreateRegistration();
-                window.location.href = "/get-started/step-one";
-            }
-        }
-
-        this.setState(currentRegistration);
-    }
-
-    nextStep(direction, info) {
-        console.log(direction)
+        this.setState({currentStep: incStep, data: data});
     }
 
     render() {
@@ -115,7 +83,17 @@ class Registration extends React.Component {
                     </div>
                     <div className="container onboarding">
                         <StepNav currentStep={this.state.currentStep} />
-                        {(this.state.currentStep == 1) ? <StepOne functions={this.functions} /> : <></>}
+                        <Carousel
+                            showArrows={false}
+                            showStatus={false}
+                            swipeable={false}
+                            showThumbs={false}
+                            selectedItem={this.state.currentStep}
+                        >
+                            <StepOne functions={this.functions} state={this.state} />
+                            <StepTwo functions={this.functions} state={this.state} />
+                            <StepThree functions={this.functions} state={this.state} />
+                        </Carousel>
                     </div>
                 </div>
             </div>

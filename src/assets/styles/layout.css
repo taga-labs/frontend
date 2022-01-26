@@ -300,6 +300,19 @@
     justify-content: space-between;
 }
 
+.container.wallet.selection {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container.half.wallet.selection {
+    width: 50%;
+}
+
+.container.half.wallet.creation {
+
+}
+
 /* Animations */
 @keyframes navSlideIn {
     0% {
