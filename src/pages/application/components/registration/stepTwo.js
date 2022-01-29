@@ -30,7 +30,7 @@ class AdditionalQuestionsStartup extends React.Component {
             <div className="container onboarding content">
                 <div className="container onboarding content interior">
                     <div className="container account types">
-                        <a className="text signin header">Additional questions for <span className="text signin header keyword">existing shareholders.</span></a>
+                        <a className="text signin header">Additional questions for existing shareholders.</a>
                         <br />
                         <br />
                         <br />

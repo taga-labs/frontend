@@ -52,6 +52,11 @@ class Registration extends React.Component {
                     type: null,
                     shareholderInfo: null,
                     companyInfo: null
+                },
+                stepThree: {
+                    metaMaskWallets: null,
+                    walletConnectWallets: null,
+
                 }
             }
         }
@@ -67,6 +72,10 @@ class Registration extends React.Component {
         var incStep = (direction) ? this.state.currentStep+1 : this.state.currentStep-1;
 
         this.setState({currentStep: incStep, data: data});
+    }
+
+    completeRegistration() {
+        
     }
 
     render() {
@@ -90,8 +99,8 @@ class Registration extends React.Component {
                             showThumbs={false}
                             selectedItem={this.state.currentStep}
                         >
-                            <StepOne functions={this.functions} state={this.state} />
-                            <StepTwo functions={this.functions} state={this.state} />
+                            {/* <StepOne functions={this.functions} state={this.state} />
+                            <StepTwo functions={this.functions} state={this.state} /> */}
                             <StepThree functions={this.functions} state={this.state} />
                         </Carousel>
                     </div>

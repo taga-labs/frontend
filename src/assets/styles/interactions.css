@@ -124,6 +124,41 @@
     background-color:
 }
 
+.button.wallet {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-family: 'Source Sans Pro', sans-serif;
+    border-radius: 2vh;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    padding: 1vh;
+    border: 2px solid white;
+}
+
+.button.wallet:hover {
+    transform: translateY(-5px);
+}
+
+.button.taga.wallet {
+    background: linear-gradient(to right, #4F68B1, #AF6AAC);
+    color: white;
+    padding: 1vh;
+}
+
+.button.wallet.neutral {
+    border: 2px solid white;
+}
+
+.button.wallet.success {
+    border: 2px solid #0ad48b;
+}
+
+.button.wallet.error {
+    border: 2px solid red;
+}
+
 /* Mobile Re-scaling */
 @media (max-width: 700px) {
     .button.nav {

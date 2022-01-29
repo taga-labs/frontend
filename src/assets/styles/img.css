@@ -16,6 +16,11 @@
     width: 12vw;
 }
 
+.wallet.button.img {
+    width: 5vw;
+    box-shadow: none;
+}
+
 /* Mobile Re-scaling */
 @media (max-width: 700px) {
     .icon {

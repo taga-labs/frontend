@@ -42,7 +42,7 @@ export default class LandingAbout extends React.Component {
             <div className="container overall">
                 <Nav state={this.state} page={"about"} methods={this.methods} />
                 <div className="container main about">
-                    <div className="container about content">
+                    <div className="container about stuff">
                         <a className="text tagline">We design and build <br/>financial tools for the <span className="text keyword tagline">people.</span></a>
                         <br />
                         <br />

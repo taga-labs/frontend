@@ -10,6 +10,7 @@ module.exports = function override(config) {
     https: require.resolve("https-browserify"),
     os: require.resolve("os-browserify/browser"),
     url: require.resolve("url"),
+    crypto: require.resolve("crypto-browserify")
   });
   config.resolve.fallback = fallback;
   config.plugins = (config.plugins || []).concat([

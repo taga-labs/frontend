@@ -35,6 +35,7 @@
 .text.tagline.smaller {
     font-size: 2.5vh;
     width: 30vw;
+    animation: none;
 }
 
 .text.keyword.tagline {
@@ -43,6 +44,12 @@
     -webkit-background-clip: text;
     /* animation: 1s ease-out 0s 1 navSlideIn; */
     display: inline-block;
+}
+
+.text.keyword.tagline.smaller {
+    font-size: 2.5vh;
+    display: inline;
+    animation: none;
 }
 
 .text.link.signin {
@@ -150,6 +157,24 @@
 .text.account.type.header {
     font-size: 2vh;
     font-weight: bold;
+}
+
+.text.neutral.wallet {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    user-select: none;
+}
+
+.text.error.wallet {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: red;
+    user-select: none;
+}
+
+.text.success.wallet {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #0ad48b;
+    user-select: none;
 }
 
 /* Animations */
