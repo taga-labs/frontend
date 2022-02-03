@@ -6,7 +6,7 @@ import {
 
 import {
     createAccount as AuthenticationCreateAccount,
-    checkAuthentication as AuthenticationCheck
+    checkAuthentication as AuthenticationCheckAccount
 } from './modules/rest/authentication';
 
 export {
@@ -14,5 +14,5 @@ export {
     SessionCreateRegistration,
     SessionModifyRegistration,
     AuthenticationCreateAccount,
-    AuthenticationCheck
+    AuthenticationCheckAccount
 }

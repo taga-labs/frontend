@@ -75,7 +75,7 @@ class Registration extends React.Component {
     }
 
     completeRegistration() {
-        
+
     }
 
     render() {
@@ -99,8 +99,8 @@ class Registration extends React.Component {
                             showThumbs={false}
                             selectedItem={this.state.currentStep}
                         >
-                            {/* <StepOne functions={this.functions} state={this.state} />
-                            <StepTwo functions={this.functions} state={this.state} /> */}
+                            <StepOne functions={this.functions} state={this.state} />
+                            <StepTwo functions={this.functions} state={this.state} />
                             <StepThree functions={this.functions} state={this.state} />
                         </Carousel>
                     </div>

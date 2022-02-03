@@ -20,19 +20,13 @@ import MetaMaskLogo from '../../../../assets/img/3rd-party/metamask-fox.svg';
 import WalletConnectLogo from '../../../../assets/img/3rd-party/walletconnect-square-white.svg';
 import LogoLightBG from '../../../../assets/img/logo-light-bg.svg';
 
-import NodeWalletConnect from "@walletconnect/node";
+import WalletConnect from "@walletconnect/client";
 import WalletConnectQRCodeModal from "@walletconnect/qrcode-modal";
 
-const walletConnector = new NodeWalletConnect({
-    bridge: "https://bridge.walletconnect.org"
-},{
-    clientMeta: {
-        description: "WalletConnect NodeJS Client",
-        url: "https://nodejs.org/en/",
-        icons: ["https://nodejs.org/static/images/logo.svg"],
-        name: "WalletConnect",
-    }
-});
+const walletConnector = new WalletConnect({
+    bridge: "https://bridge.walletconnect.org", // Required
+    qrcodeModal:  WalletConnectQRCodeModal,
+  });
 
 class WalletGeneration extends React.Component {
     constructor(props) {
@@ -44,7 +38,7 @@ class WalletGeneration extends React.Component {
             <div className="container onboarding content">
                 <div className="container onboarding content interior">
                     <div className="container wallet selection">
-                        <a className="text signin header">Get started with a Taga wallet.</a>
+                        <a className="text signin header">Get started with a <span className="text keyword tagline" style={{fontSize: '5vh'}}>Taga</span> wallet.</a>
                         <br />
                         <br />
                         <br />
@@ -53,7 +47,7 @@ class WalletGeneration extends React.Component {
                 </div>
                 <div className="container onboarding footer content">
                     <div style={{width: '100%', display: 'flex', justifyContent: 'space-between'}}>
-                        <a onClick={() => {this.props.functions.nextStep(false, this.props.state.accountInfo, "stepTwo")}} className="text signin link"><FontAwesomeIcon icon={faLongArrowAltLeft} color={"#4F68B1"} /> Back to Personal Questions</a>
+                        <a onClick={() => {this.props.functions.nextSlide(false)}} className="text signin link"><FontAwesomeIcon icon={faLongArrowAltLeft} color={"#4F68B1"} /> Back to Personal Questions</a>
                     </div>
                 </div>
             </div>
@@ -73,17 +67,47 @@ class InitialWalletSelection extends React.Component {
         this.connectWallet = this.connectWallet.bind(this);
     }
 
-    connectWallet() {
-        if(window.ethereum) {
-            let ethereum = window.ethereum;
+    connectWallet(type) {
+        if(type == "metamask") {
+            if(window.ethereum) {
+                let ethereum = window.ethereum;
 
-            ethereum.request({method:'eth_requestAccounts'}).then((accounts) => {
-                this.setState({metaMaskAccounts: accounts});
-            }).catch((err) => {
-                this.setState({metaMaskAccounts: null});
-            })
-        } else {
-            window.open("https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en");
+                ethereum.request({method:'eth_requestAccounts'}).then((accounts) => {
+                    this.setState({metaMaskAccounts: accounts});
+                }).catch((err) => {
+                    this.setState({metaMaskAccounts: null});
+                })
+            } else {
+                window.open("https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en");
+            }
+        } else if(type == "walletconnect") {
+            if(!walletConnector.connected) {
+                walletConnector.createSession().then(() => {
+                    // get uri for QR Code modal
+                    const uri = walletConnector.uri;
+                    // display QR Code modal
+                    WalletConnectQRCodeModal.open(uri, () => {
+                        console.log("QR Code Modal closed");
+                      },
+                      true // isNode = true
+                    );
+                });
+
+                walletConnector.on("connect", (err, payload) => {
+                    if (err) {
+                        throw err;
+                    }
+
+                    WalletConnectQRCodeModal.close(
+                        true // isNode = true
+                    );
+
+                    // Get provided accounts and chainId
+                    const { accounts, chainId } = payload.params[0];
+
+                    this.setState({walletConnectAccounts: accounts});
+                });
+            }   
         }
     }
     
@@ -103,7 +127,7 @@ class InitialWalletSelection extends React.Component {
                                 <div className="container wallet buttons">
                                     <div className="container wallet-buttons">
                                         <div>
-                                            <button onClick={() => {this.connectWallet()}} className={(this.state.metaMaskAccounts == null) ? "button wallet error" : (this.state.metaMaskAccounts == false) ? "button wallet neutral" : "button wallet success"}>
+                                            <button onClick={() => {this.connectWallet("metamask")}} className={(this.state.metaMaskAccounts == null) ? "button wallet error" : (this.state.metaMaskAccounts == false) ? "button wallet neutral" : "button wallet success"}>
                                                 <img src={MetaMaskLogo} className="wallet button img" />
                                                 <br />
                                                 MetaMask
@@ -113,7 +137,7 @@ class InitialWalletSelection extends React.Component {
                                             <a className={(this.state.metaMaskAccounts == null) ? "text error wallet" : (this.state.metaMaskAccounts == false) ? "text neutral wallet" : "text success wallet"}>{ (this.state.metaMaskAccounts) ? this.state.metaMaskAccounts[0].substring(0, 5) + "..." + this.state.metaMaskAccounts[0].substring(this.state.metaMaskAccounts[0].length - 6, this.state.metaMaskAccounts[0].length - 1) : "Error! Try again."} {(this.state.metaMaskAccounts) ? <FontAwesomeIcon icon={faCheckCircle} color={"#0ad48b"} /> : <></>}</a>
                                         </div>
                                         <div>
-                                            <button onClick={this.connectWallet} className="button wallet">
+                                            <button onClick={() => {this.connectWallet("walletconnect")}} className="button wallet">
                                                 <img src={WalletConnectLogo} className="wallet button img" />
                                                 <br />
                                                 Wallet Connect
