@@ -51,27 +51,40 @@ export default class StepOne extends React.Component {
         this.functions = this.props.functions;
     }
 
+    componentDidUpdate() {
+        console.log(this.state.identifierCheck)
+    }
+    
     onIdentifierChange(e) {
         const value = e.target.value;
 
         var email = false;
+        var identifierValidity = false;
 
-        // Check if an input is an email
-        if(value.includes("@")) {
-            var splitVal = value.split("@");
+        if(value.length > 4) {
+            AuthenticationCheckAccount({identifier: value}).then((results) => {
+                var response = results.data;
 
-            if(splitVal[1].includes(".")) {
-                email = true;
-            } else {
-                email = false;
-            }
+                if(response.error && response.error == "invalid_identifier" && response.message == "no account with that identifier") {
+                    identifierValidity = true;
+
+                    // Check if an input is an email
+                    if(value.includes("@")) {
+                        var splitVal = value.split("@");
+
+
+                        if(splitVal[1].includes(".")) {
+                            email = true;
+                        } else {
+                            email = false;
+                            identifierValidity = false;
+                        }
+                    }
+                }
+
+                this.setState({identifier: value, identifierType: (email) ? "email" : "username", identifierCheck: identifierValidity});
+            });
         }
-
-        AuthenticationCheckAccount({identifier: value}).then((results) => {
-            console.log(results)
-        });
-
-        this.setState({identifier: value, identifierType: (email) ? "email" : "username"});
     }
 
     onPasswordChange(type, e) {
@@ -112,7 +125,7 @@ export default class StepOne extends React.Component {
             if(!lengthCheck || !specialCharCheck) {
                 this.setState({passwordLengthCheck: !lengthCheck, passwordSpecialCharCheck: !specialCharCheck});
             } else {
-                this.functions.nextStep(true, {identifier: this.state.identifier, password: obj.password}, "stepOne");
+                this.functions.nextStep(true, {identifier: this.state.identifier, password: obj.password, identifier_type: this.state.identifierType}, "stepOne");
             }
         }
     }
@@ -135,7 +148,7 @@ export default class StepOne extends React.Component {
                                     </div>
                                     <input onFocus={() => { this.onFocus(1) }} onChange={this.onIdentifierChange} className="input create" placeholder="enter an identifier..." />
                                     <div className={"icon container input"}>
-                                        {(this.state.idCheck) ? <FontAwesomeIcon icon={faCheck} color={"#0ad48b"} /> : <FontAwesomeIcon icon={faCheck} color={"white"} />}
+                                        {(this.state.identifierCheck == true) ? <FontAwesomeIcon icon={faCheck} color={"#0ad48b"} /> : (this.state.identifierCheck == false) ? <FontAwesomeIcon icon={faTimes} color={"red"} /> : <FontAwesomeIcon icon={faCheck} color={"white"} />}
                                     </div>
                                 </div>
                                 <br />

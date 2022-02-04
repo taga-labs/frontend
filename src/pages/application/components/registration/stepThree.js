@@ -61,10 +61,12 @@ class InitialWalletSelection extends React.Component {
 
         this.state = {
             metaMaskAccounts: false,
-            walletConnectAccounts: false
+            walletConnectAccounts: false,
+            tagaAccounts: false
         }
 
         this.connectWallet = this.connectWallet.bind(this);
+        this.completeRegistration = this.completeRegistration.bind(this);
     }
 
     connectWallet(type) {
@@ -109,6 +111,14 @@ class InitialWalletSelection extends React.Component {
                 });
             }   
         }
+    }
+
+    completeRegistration() {
+        var finalState = this.props.state;
+
+        finalState.data['stepThree'] = this.state;
+
+        this.props.functions.completeRegistration(finalState)
     }
     
     render() {
@@ -167,7 +177,7 @@ class InitialWalletSelection extends React.Component {
                 <div className="container onboarding footer content">
                     <div style={{width: '100%', display: 'flex', justifyContent: 'space-between'}}>
                         <a onClick={() => {this.props.functions.nextStep(false, this.props.state.accountInfo, "stepTwo")}} className="text signin link"><FontAwesomeIcon icon={faLongArrowAltLeft} color={"#4F68B1"} /> Back to Personal Questions</a>
-                        {(this.state.walletConnectAccounts != false || this.state.metaMaskAccounts != false) ? <a onClick={() => {this.props.functions.completeRegistration(this.state)}} className="text signin link">I'm Done <FontAwesomeIcon icon={faLongArrowAltRight} color={"#AF6AAC"} /></a> : <></>}
+                        {(this.state.walletConnectAccounts != false || this.state.metaMaskAccounts != false) ? <a onClick={this.completeRegistration} className="text signin link">I'm Done <FontAwesomeIcon icon={faLongArrowAltRight} color={"#AF6AAC"} /></a> : <></>}
                     </div>
                 </div>
             </div>
@@ -200,8 +210,8 @@ export default class StepThree extends React.Component {
                     showThumbs={false}
                     selectedItem={this.state.currentSlide}
                 >
-                    <InitialWalletSelection state={this.state} functions={this.props.functions} />
-                    <WalletGeneration state={this.state} functions={this.props.functions} />
+                    <InitialWalletSelection state={this.props.state} functions={this.props.functions} />
+                    <WalletGeneration state={this.props.state} functions={this.props.functions} />
                 </Carousel>
             </div>
         )

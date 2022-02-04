@@ -10,7 +10,9 @@ import {
 import {
     SessionGetRegistration,
     SessionCreateRegistration,
-    SessionModifyRegistration
+    SessionModifyRegistration,
+
+    AuthenticationCreateAccount
 } from '../../../api/index';
 
 // Carousel module
@@ -27,14 +29,15 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import LogoDarkBG from '../../../assets/img/logo-dark-bg.svg';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faLongArrowAltLeft, faLongArrowAltRight, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faLongArrowAltLeft, faLongArrowAltRight, faCheck, faTimes, faGlassWhiskey } from '@fortawesome/free-solid-svg-icons';
 
 // Components
 import {
     RegistrationStepNav as StepNav,
     RegistrationStepOne as StepOne,
     RegistrationStepTwo as StepTwo,
-    RegistrationStepThree as StepThree
+    RegistrationStepThree as StepThree,
+    RegistrationFinished as Finished
 } from '../components';
 
 class Registration extends React.Component {
@@ -43,6 +46,7 @@ class Registration extends React.Component {
 
         this.state = {
             currentStep: 0,
+            registrationComplete: false,
             data: {
                 stepOne: {
                     identifier: null,
@@ -52,30 +56,52 @@ class Registration extends React.Component {
                     type: null,
                     shareholderInfo: null,
                     companyInfo: null
-                },
-                stepThree: {
-                    metaMaskWallets: null,
-                    walletConnectWallets: null,
-
                 }
             }
         }
 
         this.nextStep = this.nextStep.bind(this);
+        this.completeRegistration = this.completeRegistration.bind(this);
 
         this.functions = {
-            nextStep: this.nextStep
+            nextStep: this.nextStep,
+            completeRegistration: this.completeRegistration
         }
     }
 
     nextStep(direction, data, step) {
         var incStep = (direction) ? this.state.currentStep+1 : this.state.currentStep-1;
 
-        this.setState({currentStep: incStep, data: data});
+        var obj = this.state;
+
+        obj["currentStep"] = incStep;
+        obj.data[step] = data;
+
+        this.setState(obj);
     }
 
-    completeRegistration() {
+    completeRegistration(finalState) {
+        var obj = this.state;
 
+        var createAccountObj = {
+            identifier: obj.data.stepOne.identifier,
+            password: obj.data.stepOne.password,
+            types: obj.data.stepTwo,
+            identifier_type: obj.data.stepOne.identifier_type,
+            wallets: {
+                metamask: (finalState.data.stepThree.metaMaskAccounts != false) ? true : false,
+                walletconnect: (finalState.data.stepThree.walletConnectAccounts != false) ? true : false,
+                taga: (finalState.data.stepThree.tagaAccounts != false) ? true : false
+            }
+        }
+
+        AuthenticationCreateAccount(createAccountObj).then((results) => {
+            var response = results.data;
+
+            if(response.success) {
+                this.setState({currentStep: this.state.currentStep + 1, registrationComplete: true})
+            }
+        });
     }
 
     render() {
@@ -91,17 +117,19 @@ class Registration extends React.Component {
                         </div>
                     </div>
                     <div className="container onboarding">
-                        <StepNav currentStep={this.state.currentStep} />
+                        {(!this.state.registrationComplete) ? <StepNav currentStep={this.state.currentStep} /> : <></>}
                         <Carousel
                             showArrows={false}
                             showStatus={false}
                             swipeable={false}
                             showThumbs={false}
                             selectedItem={this.state.currentStep}
+                            showIndicators={false}
                         >
                             <StepOne functions={this.functions} state={this.state} />
                             <StepTwo functions={this.functions} state={this.state} />
                             <StepThree functions={this.functions} state={this.state} />
+                            <Finished functions={this.functions} state={this.state} />
                         </Carousel>
                     </div>
                 </div>
