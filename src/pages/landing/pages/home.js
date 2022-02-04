@@ -5,13 +5,13 @@ import ReactDOM from 'react-dom';
 // Fontawesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faArrowUp, faCopyright, faLongArrowAltDown, faLongArrowAltRight, faRocket } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faInstagram, faReddit, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 // Components
 import Nav from '../components/nav';
 
 // Stylesheets
 import '../../../assets/styles/layout.css';
-import '../../../assets/styles/color.css';
 import '../../../assets/styles/typography.css';
 
 // Images
@@ -20,8 +20,6 @@ import SharePartitioningGraphic from '../../../assets/img/taga-partitioning-imag
 import TokenGenerationGraphic from '../../../assets/img/taga-tokens-image.svg';
 import MarketPlaceGraphic from '../../../assets/img/taga-marketplace-image.svg';
 import PortfolioGraphic from '../../../assets/img/taga-portfolio-image.svg';
-import { faFacebook, faInstagram, faReddit, faYoutube } from '@fortawesome/free-brands-svg-icons';
-
 
 export default class LandingHome extends React.Component {
     constructor(props) {
@@ -118,9 +116,9 @@ export default class LandingHome extends React.Component {
                         <div className="container content centered vertical">
                             <img src={SharePartitioningGraphic} className="secondary image" />
                             <div className="container text main">
-                                <a className="text tagline">Set aside equity.</a>
-                                <p className="text tagline smaller">As an existing shareholder, set aside equity to list in our ecosystem, and in its place a token will be deployed.</p>
-                                <p className="text paragraph main" >In doing so, your startup opens up a portion of its equity to retail investors, and your company can attract a more democratized pool of capital.</p>
+                                <a className="text tagline">List your equity.</a>
+                                <p className="text tagline smaller">As a startup owner or shareholder, set aside equity to list in our ecosystem, and in its place a token will be deployed.</p>
+                                <p className="text paragraph main" >In doing so, the equity will open up to retail investors, where you can get liquidity for you shares and continue to benefit.</p>
                                 <button className="button nav">Learn More <FontAwesomeIcon icon={faLongArrowAltRight} /></button>
                             </div>
                             <div className="container nextButton">
@@ -259,7 +257,7 @@ export default class LandingHome extends React.Component {
                             <a href="https://github.com/tagalabs" className="text footer link">Github</a>
                             <br />
                             <br />
-                            <a href="blog" className="text footer link">Blog</a>
+                            <a href="blog" className="text footer link">Our Blog</a>
                         </div>
                     </div>
                     <br />

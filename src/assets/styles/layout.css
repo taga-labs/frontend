@@ -44,7 +44,7 @@
     width: 99%;
     display: flex;
     height: max-content;
-    animation: 1s ease-out 0s 1 navSlideIn;
+    /* animation: 1s ease-out 0s 1 navSlideIn; */
 }
 
 /* Page content container */
@@ -53,6 +53,31 @@
     height: 100%;
     background-color: white;
     position: relative;
+    display: flex;
+}
+
+.container.main.about {
+    width: 100%;
+    background-color: white;
+}
+
+.container.content.half {
+    width: 50%;
+    display: inline-block;
+    border-top-right-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+    vertical-align: top;
+}
+
+.container.content.half.inner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#signin-half {
+    background: linear-gradient(to right, #4F68B1, #AF6AAC);
 }
 
 .container.content.centered {
@@ -129,6 +154,188 @@
 
 .container.text.main {
     width: min-content;
+}
+
+.container.stuff.about {
+    width: 55vw;
+    margin: 0 auto;
+    padding-top: 30vh;
+    text-align: center;
+}
+
+.container.about.values {
+    width: 80%;
+    height: 30vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container.value.about {
+    width: 45%;
+    text-align: left;
+}
+
+.container.signin.form {
+    width: 55%;
+}
+
+.container.onboarding {
+    width: 60vw;
+    margin: 0 auto;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    /* overflow-y: hidden; */
+}
+
+.container.onboarding.content {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.container.onboarding.content.interior {
+    /* height: 100%; */
+    /* padding-top: 15%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container.onboarding.footer.content {
+    height: max-content;
+    width: 100%;
+    padding-bottom: 1vh;
+    position: absolute;
+    bottom: 2vh;
+    text-align: left;
+}
+
+.container.form.onboarding {
+    width: 50%;
+    height: max-content;
+    /* border: 1px solid gray; */
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    border-radius: 2vh;
+    padding: 3vh;
+    text-align: left;
+}
+
+
+.container.steps {
+    width: 100%;
+    display: flex;
+    height: max-content;
+    /* animation: 1s ease-out 0s 1 navSlideIn; */
+    flex-direction: row;
+}
+
+.step.container {
+    flex: 1;
+    padding: 1vh;
+}
+
+.step.container.interior {
+    flex: none;
+    width: 95%;
+    margin: 0 auto;
+    border-top: 0.5vh solid lightgray;
+    /* border-image: linear-gradient(to right, #4F68B1, #AF6AAC) 30; */
+}
+
+.step.container.interior.selected {
+    border-image: linear-gradient(to right, #4F68B1, #AF6AAC) 30;
+}
+
+.long.logo.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: max-content;
+    padding: 2vh;
+}
+
+.input.container {
+    display: flex;
+    align-items: center;
+    padding: 1vh;
+    border: 2px solid whitesmoke;
+    background-color: whitesmoke;
+    border-radius: 1vh;
+}
+
+.input.container.selected {
+    /* border: 2px solid lightgray; */
+    background-color: transparent;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.icon.container.input {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding-top: 1vh;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.container.error.message {
+    max-width: 15vw;
+    text-align: center;
+    min-height:5vh;
+    margin: 0 auto;
+}
+
+.container.account.types {
+    width: max-content;
+    margin: 0 auto;
+}
+
+.container.account.types.interior {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container.wallet.selection.interior {
+    display: flex;
+}
+
+.container.wallet.selection {
+    width: 100%;
+    height: 75%;
+}
+
+.container.half.wallet.selection {
+    width: 50%;
+    border-right: 1px solid lightgray;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container.half.wallet.creation {
+    border-left: 1px solid lightgray;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container.wallet.buttons { 
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container.wallet-buttons {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* Animations */

@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Stylesheets
 import '../../../assets/styles/layout.css';
-import '../../../assets/styles/color.css';
 import '../../../assets/styles/typography.css';
 import '../../../assets/styles/img.css';
 import '../../../assets/styles/interactions.css';
@@ -44,9 +43,9 @@ export default class LandingHome extends React.Component {
                         </a>
                     </div>
                     <div className="container links navigation">
-                        <a href="/docs" className="text nav links">Products</a>
+                        <a href="/products" className="text nav links">Products</a>
                         <a href="/docs" className="text nav links">Docs</a>
-                        <a href="/docs" className="text nav links">About</a>
+                        <a href="/about" className="text nav links">About</a>
                     </div>
                     <div className="container button navigation">
                         <a href="/signin" className="text link signin">Sign In</a>

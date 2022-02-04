@@ -11,8 +11,14 @@ import {
 
 // Page module imports
 import {
-    LandingHome
+    LandingHome,
+    LandingAbout
 } from './pages/landing';
+
+import {
+    SignIn,
+    Registration
+} from './pages/application';
 
 // Init app variable
 let App;
@@ -51,7 +57,12 @@ else if(domainArray.length > 1 && domainArray[0] != "app") {
             return(
                 <BrowserRouter>
                     <Routes>
-                        <Route path="*" element={<LandingHome />} />
+                        <Route path="/" element={<LandingHome />} />
+                        <Route path="/about" element={<LandingAbout />} />
+                        <Route path="/signin" element={<SignIn />} />
+                        <Route path="/get-started" element={<Registration />}>
+                            <Route path=":step" element={<Registration />} />
+                        </Route>
                     </Routes>
                 </BrowserRouter>
             )
@@ -71,13 +82,14 @@ else {
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<LandingHome />} />
+                        <Route path="/about" element={<LandingAbout />} />
+                        <Route path="/signin" element={<SignIn />} />
+                        <Route path="/get-started" element={<Registration />} />
                     </Routes>
                 </BrowserRouter>
             )
         }
     }
 }
-
-console.log(App);
 
 export default App;
