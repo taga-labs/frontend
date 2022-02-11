@@ -113,8 +113,11 @@ class InitialWalletSelection extends React.Component {
         }
     }
 
-    completeRegistration() {
+    completeRegistration(tagaWalletStatus) {
         var finalState = this.props.state;
+        var stepThreeState = this.state;
+
+        stepThreeState.tagaAccounts = tagaWalletStatus == "taga-wallet";
 
         finalState.data['stepThree'] = this.state;
 
@@ -163,7 +166,7 @@ class InitialWalletSelection extends React.Component {
                                 <a className="text tagline smaller">A <span className="text keyword tagline smaller">Taga</span> wallet.</a>
                                 <div className="container wallet buttons">
                                     <div className="container wallet-buttons" style={{display: 'flex', justifyContent: 'center'}}>
-                                        <button onClick={this.props.functions.nextSlide} className="button taga wallet">
+                                        <button onClick={() => {this.completeRegistration("taga-wallet")}} className="button taga wallet">
                                             <img src={LogoLightBG} className="wallet button img" />
                                             <br />
                                             Get Started <FontAwesomeIcon icon={faLongArrowAltRight} />
@@ -211,7 +214,7 @@ export default class StepThree extends React.Component {
                     selectedItem={this.state.currentSlide}
                 >
                     <InitialWalletSelection state={this.props.state} functions={this.props.functions} />
-                    <WalletGeneration state={this.props.state} functions={this.props.functions} />
+                    {/* <WalletGeneration state={this.props.state} functions={this.props.functions} /> */}
                 </Carousel>
             </div>
         )

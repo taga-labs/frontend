@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-var baseURL = "http://localhost:6969/api/";
+var baseURL = "https://2y4w771wkb.execute-api.us-east-1.amazonaws.com/dev/api/";
 
 function createAccount(obj) {
     return axios({
