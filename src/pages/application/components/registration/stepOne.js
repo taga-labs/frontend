@@ -112,7 +112,7 @@ export default class StepOne extends React.Component {
     onSubmit(e) {
         e.preventDefault();
 
-        if(this.state.identifierType != null && this.state.passwordCheck) {
+        if(this.state.identifierType != null && this.state.passwordCheck && this.state.identifierCheck) {
             var obj = {
                 identifier: this.state.identifier,
                 password: this.state.password1,
@@ -163,7 +163,7 @@ export default class StepOne extends React.Component {
                                     </div>
                                 </div>
                                 <br />
-                                <a className="text paragraph about register">Re-enter that Password</a>
+                                <a className="text paragraph about register">Re-enter Your Password</a>
                                 <div ref={this.password2Ref} onFocus={() => {this.setState({focus: 3})}} className={(this.state.focus == 3) ? "input container selected" : "input container"}>
                                     <div className={"icon container input"}>
                                         <FontAwesomeIcon icon={faLock} color={"lightgray"} />

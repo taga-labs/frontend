@@ -27,7 +27,8 @@ export default class LandingHome extends React.Component {
 
         this.state = {
             mobileMenu: false,
-            mobileRescale: window.matchMedia("(max-width: 700px)").matches
+            mobileRescale: window.matchMedia("(max-width: 700px)").matches,
+            previousScrollPosition: 0
         };
 
         // Refs
@@ -38,6 +39,7 @@ export default class LandingHome extends React.Component {
         this.PortfolioSection = React.createRef();
 
         this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
+        this.mouseWheelScroll = this.mouseWheelScroll.bind(this);
 
         this.methods = {
             toggleMobileMenu: this.toggleMobileMenu
@@ -84,11 +86,20 @@ export default class LandingHome extends React.Component {
         }
     }
 
+    mouseWheelScroll(e) {
+        // var newPosition = e.clientY;
+        console.log(e)
+
+        // if(newPosition) {
+
+        // }
+    }
+
     render() {
         return(
             <div className="container overall">
                 <Nav state={this.state} methods={this.methods} />
-                <div ref={this.LandingSection} className="container content">
+                <div onWheel={(e) => {this.mouseWheelScroll(e)}} id="test" ref={this.LandingSection} className="container content">
                     <div className="container content centered">
                         <div className="container content centered vertical">
                             {(this.state.mobileRescale) ? <img src={MainVectorGraphic} className="main image" /> : <></>}
