@@ -26,7 +26,7 @@ export default class StepOne extends React.Component {
         super(props)
 
         this.state = {
-            identifier: null,
+            identifier: (window.sessionStorage.getItem("getStartedIdentifier") != undefined) ? window.sessionStorage.getItem("getStartedIdentifier") : null,
             identifierType: null,
             identifierCheck: null,
             password1: null,
@@ -112,22 +112,29 @@ export default class StepOne extends React.Component {
     onSubmit(e) {
         e.preventDefault();
 
-        if(this.state.identifierType != null && this.state.passwordCheck && this.state.identifierCheck) {
-            var obj = {
-                identifier: this.state.identifier,
-                password: this.state.password1,
-                type: null
-            }
+        AuthenticationCheckAccount({identifier: this.state.identifier}).then((results) => {
+            var response = results.data;
+            if(response.error != undefined) {
+                if(this.state.identifierType != null && this.state.passwordCheck && this.state.identifierCheck) {
+                    var obj = {
+                        identifier: this.state.identifier,
+                        password: this.state.password1,
+                        type: null
+                    }
 
-            var lengthCheck = (obj.password.length > 8);
-            var specialCharCheck = obj.password.includes(".") || obj.password.includes("/") || obj.password.includes("*") || obj.password.includes("[") || obj.password.includes("]") || obj.password.includes("!") || obj.password.includes(":") || obj.password.includes(";") || obj.password.includes("'") || obj.password.includes("-") || obj.password.includes("-") || obj.password.includes("+") || obj.password.includes("=") || obj.password.includes("`") || obj.password.includes("~");
+                    var lengthCheck = (obj.password.length > 8);
+                    var specialCharCheck = obj.password.includes(".") || obj.password.includes("/") || obj.password.includes("*") || obj.password.includes("[") || obj.password.includes("]") || obj.password.includes("!") || obj.password.includes(":") || obj.password.includes(";") || obj.password.includes("'") || obj.password.includes("-") || obj.password.includes("-") || obj.password.includes("+") || obj.password.includes("=") || obj.password.includes("`") || obj.password.includes("~");
 
-            if(!lengthCheck || !specialCharCheck) {
-                this.setState({passwordLengthCheck: !lengthCheck, passwordSpecialCharCheck: !specialCharCheck});
+                    if(!lengthCheck || !specialCharCheck) {
+                        this.setState({passwordLengthCheck: !lengthCheck, passwordSpecialCharCheck: !specialCharCheck});
+                    } else {
+                        this.functions.nextStep(true, {identifier: this.state.identifier, password: obj.password, identifier_type: this.state.identifierType}, "stepOne");
+                    }
+                }
             } else {
-                this.functions.nextStep(true, {identifier: this.state.identifier, password: obj.password, identifier_type: this.state.identifierType}, "stepOne");
+                this.setState({identifierCheck: false});
             }
-        }
+        });
     }
 
     render() {
@@ -146,7 +153,7 @@ export default class StepOne extends React.Component {
                                     <div className={"icon container input"}>
                                         <FontAwesomeIcon icon={faUser} color={"lightgray"} />
                                     </div>
-                                    <input onFocus={() => { this.onFocus(1) }} onChange={this.onIdentifierChange} className="input create" placeholder="enter an identifier..." />
+                                    <input onFocus={() => { this.onFocus(1) }} value={this.state.identifier} onChange={this.onIdentifierChange} className="input create" placeholder="enter an identifier..." />
                                     <div className={"icon container input"}>
                                         {(this.state.identifierCheck == true) ? <FontAwesomeIcon icon={faCheck} color={"#0ad48b"} /> : (this.state.identifierCheck == false) ? <FontAwesomeIcon icon={faTimes} color={"red"} /> : <FontAwesomeIcon icon={faCheck} color={"white"} />}
                                     </div>

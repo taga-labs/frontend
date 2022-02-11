@@ -46,11 +46,9 @@ export default class LandingHome extends React.Component {
         }
     }
 
-    componentDidUpdate() {
-        console.log(this.state.mobileMenu)
-    }
-
     componentDidMount() {
+
+        window.sessionStorage.clear();
         const mobileRescaleHandler = (e) => {
             this.setState({mobileRescale: e.matches});
         }
@@ -95,6 +93,24 @@ export default class LandingHome extends React.Component {
         // }
     }
 
+    goToGetStarted() {
+        var identifierValidity = false;
+
+        if(this.state.identifier) {
+            // Check if an input is an email
+            if(this.state.identifier.includes("@")) {
+                var splitVal = this.state.identifier.split("@");
+
+                identifierValidity = splitVal[1].includes(".");
+            }
+
+            if(this.state.identifier.length > 3 && identifierValidity) {
+                window.sessionStorage.setItem("getStartedIdentifier", this.state.identifier);
+                window.location.href = "/get-started";
+            }
+        }
+    }
+
     render() {
         return(
             <div className="container overall">
@@ -109,8 +125,8 @@ export default class LandingHome extends React.Component {
                                     Taga is a mutually beneficial ecosystem where private companies and public capital can interact seamlessly.
                                 </p>
                                 <div className="container interactions main">
-                                    <input className="input main" placeholder="rhendricks@piper.net"></input>
-                                    <button className="button nav">Get Started {(!this.state.mobileRescale) ?<FontAwesomeIcon icon={faLongArrowAltRight} /> : <></> }</button>
+                                    <input onChange={(e) => {this.setState({identifier: e.target.value})}} className="input main" placeholder="rhendricks@piper.net"></input>
+                                    <button onClick={() => {this.goToGetStarted()}} className="button nav">Get Started {(!this.state.mobileRescale) ?<FontAwesomeIcon icon={faLongArrowAltRight} /> : <></> }</button>
                                 </div>
                             </div>
                             {(!this.state.mobileRescale) ? <img src={MainVectorGraphic} className="main image" /> : <></>}
