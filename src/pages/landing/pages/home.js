@@ -22,8 +22,13 @@ import MarketPlaceGraphic from '../../../assets/img/taga-marketplace-image.svg';
 import PortfolioGraphic from '../../../assets/img/taga-portfolio-image.svg';
 
 import RainLogo from '../../../assets/img/rain.png';
-import StellicLogo from '../../../assets/img/stellic.jpeg';
+import StellicLogo from '../../../assets/img/stellic.png';
 import CharthopLogo from '../../../assets/img/charthop.png';
+import PaperLogo from '../../../assets/img/paper.png';
+import CharthopLogoGray from '../../../assets/img/charthop-gray.png';
+import RainLogoGray from '../../../assets/img/rain-gray.png';
+import StellicLogoGray from '../../../assets/img/stellic-gray.png';
+import PaperLogoGray from '../../../assets/img/paper-gray.png';
 
 export default class LandingHome extends React.Component {
     constructor(props) {
@@ -32,7 +37,13 @@ export default class LandingHome extends React.Component {
         this.state = {
             mobileMenu: false,
             mobileRescale: window.matchMedia("(max-width: 700px)").matches,
-            previousScrollPosition: 0
+            previousScrollPosition: 0,
+            mouseOver: {
+                stellic: false,
+                paper: false,
+                rain: false,
+                charthop: false
+            }
         };
 
         // Refs
@@ -44,10 +55,16 @@ export default class LandingHome extends React.Component {
 
         this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
         this.mouseWheelScroll = this.mouseWheelScroll.bind(this);
+        this.offeringImageMouseOver = this.offeringImageMouseOver.bind(this);
+        this.offeringImageMouseOut = this.offeringImageMouseOut.bind(this);
 
         this.methods = {
             toggleMobileMenu: this.toggleMobileMenu
         }
+    }
+
+    componentDidUpdate() {
+        console.log(this.state.mouseOver)
     }
 
     componentDidMount() {
@@ -115,6 +132,22 @@ export default class LandingHome extends React.Component {
         }
     }
 
+    offeringImageMouseOver(logo) {
+        var currentState = this.state.mouseOver;
+
+        currentState[logo] = true;
+
+        this.setState({mouseOver: currentState});
+    }
+
+    offeringImageMouseOut(logo) {
+        var currentState = this.state.mouseOver;
+
+        currentState[logo] = false;
+
+        this.setState({mouseOver: currentState});
+    }
+
     render() {
         return(
             <div className="container overall">
@@ -138,15 +171,24 @@ export default class LandingHome extends React.Component {
                             </div>
                             <div className="container partners">
                                 <div className="container interior partners">
-                                    <img src={RainLogo} className="partner logo" style={{marginRight: '3vw', height: '5vh'}}/>
-                                    <img src={StellicLogo} className="partner logo" style={{marginRight: '3vw'}} />
-                                    <img src={CharthopLogo} className="partner logo" />
+                                        <a href="https://www.paper.xyz">
+                                            <img onMouseOver={() => {this.offeringImageMouseOver("paper")}} onMouseOut={() => {this.offeringImageMouseOut("paper")}} src={(this.state.mouseOver.paper) ? PaperLogo : PaperLogoGray} style={{opacity: 0.1}} className="partner logo" style={{marginRight: '3vw', height: '5vh'}}/>
+                                        </a>
+                                        <a href="https://www.rain.aero/">
+                                            <img onMouseOver={() => {this.offeringImageMouseOver("rain")}} src={(this.state.mouseOver.rain) ? RainLogo : RainLogoGray} className="partner logo" style={{marginRight: '3vw', height: '5vh'}}/>
+                                        </a>
+                                        <a href="https://www.stellic.com/">
+                                            <img onMouseOver={() => {this.offeringImageMouseOver("stellic")}} onMouseOut={() => {this.offeringImageMouseOut("stellic")}} src={(this.state.mouseOver.stellic) ? StellicLogo : StellicLogoGray} style={{opacity: 0.1}} className="partner logo" style={{marginRight: '3vw'}} />
+                                        </a>
+                                        <a href="https://www.charthop.com/">
+                                            <img onMouseOver={() => {this.offeringImageMouseOver("charthop")}} onMouseOut={() => {this.offeringImageMouseOut("charthop")}} src={(this.state.mouseOver.charthop) ? CharthopLogo : CharthopLogoGray} style={{opacity: (this.state.mouseOver.charthop) ? 1 : 0.7}} className="partner logo" />
+                                        </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div style={{width: '100vw', height: 'max-content', paddingTop: '10vh'}}>
+                <div style={{width: '100vw', height: 'max-content', paddingTop: '20vh'}}>
                     <div ref={this.EquitySection} className="container content">
                         <div className="container content centered">
                             <div className="container feature">
