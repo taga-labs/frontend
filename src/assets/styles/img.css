@@ -9,7 +9,7 @@
 }
 
 .secondary.image {
-    width: 35vw;
+    width: 20vw;
 }
 
 .icon.account.type {
@@ -19,6 +19,15 @@
 .wallet.button.img {
     width: 5vw;
     box-shadow: none;
+}
+
+.partner.logo {
+    height: 10vh;
+    transition: all 0.5s ease 0s;
+}
+
+.partner.logo:hover {
+    transform: translateY(-5px);
 }
 
 /* Mobile Re-scaling */

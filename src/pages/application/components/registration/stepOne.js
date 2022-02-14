@@ -153,7 +153,7 @@ export default class StepOne extends React.Component {
                                     <div className={"icon container input"}>
                                         <FontAwesomeIcon icon={faUser} color={"lightgray"} />
                                     </div>
-                                    <input onFocus={() => { this.onFocus(1) }} value={this.state.identifier} onChange={this.onIdentifierChange} className="input create" placeholder="enter an identifier..." />
+                                    <input onFocus={() => { this.onFocus(1) }} defaultValue={ (window.sessionStorage.getItem("getStartedIdentifier") != undefined) ? window.sessionStorage.getItem("getStartedIdentifier") : null} onChange={this.onIdentifierChange} className="input create" placeholder="enter an identifier..." />
                                     <div className={"icon container input"}>
                                         {(this.state.identifierCheck == true) ? <FontAwesomeIcon icon={faCheck} color={"#0ad48b"} /> : (this.state.identifierCheck == false) ? <FontAwesomeIcon icon={faTimes} color={"red"} /> : <FontAwesomeIcon icon={faCheck} color={"white"} />}
                                     </div>
