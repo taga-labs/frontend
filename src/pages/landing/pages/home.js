@@ -20,7 +20,10 @@ import SharePartitioningGraphic from '../../../assets/img/taga-partitioning-imag
 import TokenGenerationGraphic from '../../../assets/img/taga-tokens-image.svg';
 import MarketPlaceGraphic from '../../../assets/img/taga-marketplace-image.svg';
 import PortfolioGraphic from '../../../assets/img/taga-portfolio-image.svg';
-import Placeholder from '../../../assets/img/placeholder.png';
+
+import RainLogo from '../../../assets/img/rain.png';
+import StellicLogo from '../../../assets/img/stellic.jpeg';
+import CharthopLogo from '../../../assets/img/charthop.png';
 
 export default class LandingHome extends React.Component {
     constructor(props) {
@@ -135,9 +138,9 @@ export default class LandingHome extends React.Component {
                             </div>
                             <div className="container partners">
                                 <div className="container interior partners">
-                                    <img src={Placeholder} className="partner logo" style={{marginRight: '1vw'}}/>
-                                    <img src={Placeholder} className="partner logo" style={{marginRight: '1vw'}} />
-                                    <img src={Placeholder} className="partner logo" />
+                                    <img src={RainLogo} className="partner logo" style={{marginRight: '3vw', height: '5vh'}}/>
+                                    <img src={StellicLogo} className="partner logo" style={{marginRight: '3vw'}} />
+                                    <img src={CharthopLogo} className="partner logo" />
                                 </div>
                             </div>
                         </div>

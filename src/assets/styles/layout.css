@@ -62,6 +62,8 @@
 
 .container.interior.partners {
     margin-bottom: 7vh;
+    display: flex;
+    align-items: center;
 }
 
 /* Page content container */
