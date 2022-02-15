@@ -21,9 +21,16 @@
     box-shadow: none;
 }
 
-.partner.logo {
-    height: 10vh;
+.partner.logo.gray {
+    height: 7vh;
     transition: all 0.5s ease 0s;
+    opacity: 0.5;
+}
+
+.partner.logo.regular {
+    height:7vh;
+    transition: all 0.5s ease 0s;
+    opacity: 1;
 }
 
 .partner.logo:hover {

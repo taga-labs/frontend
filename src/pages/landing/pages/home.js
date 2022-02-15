@@ -25,6 +25,10 @@ import RainLogo from '../../../assets/img/rain.png';
 import StellicLogo from '../../../assets/img/stellic.png';
 import CharthopLogo from '../../../assets/img/charthop.png';
 import PaperLogo from '../../../assets/img/paper.png';
+import FractalLogo from '../../../assets/img/fractal.png';
+import FractalLogoGray from '../../../assets/img/fractal-gray.png';
+import LoveEveryLogo from '../../../assets/img/loveevery.png';
+import LoveEveryLogoGray from '../../../assets/img/lovevery-gray.png';
 import CharthopLogoGray from '../../../assets/img/charthop-gray.png';
 import RainLogoGray from '../../../assets/img/rain-gray.png';
 import StellicLogoGray from '../../../assets/img/stellic-gray.png';
@@ -172,23 +176,29 @@ export default class LandingHome extends React.Component {
                             <div className="container partners">
                                 <div className="container interior partners">
                                         <a href="https://www.paper.xyz">
-                                            <img onMouseOver={() => {this.offeringImageMouseOver("paper")}} onMouseOut={() => {this.offeringImageMouseOut("paper")}} src={(this.state.mouseOver.paper) ? PaperLogo : PaperLogoGray} style={{opacity: 0.1}} className="partner logo" style={{marginRight: '3vw', height: '5vh'}}/>
+                                            <img onMouseOver={() => {this.offeringImageMouseOver("paper")}} onMouseOut={() => {this.offeringImageMouseOut("paper")}} src={(this.state.mouseOver.paper) ? PaperLogo : PaperLogoGray} className={(this.state.mouseOver.paper) ? "partner logo regular" : "partner logo gray"} style={{marginRight: '3vw', height: '5vh'}}/>
                                         </a>
                                         <a href="https://www.rain.aero/">
-                                            <img onMouseOver={() => {this.offeringImageMouseOver("rain")}} src={(this.state.mouseOver.rain) ? RainLogo : RainLogoGray} className="partner logo" style={{marginRight: '3vw', height: '5vh'}}/>
+                                            <img onMouseOver={() => {this.offeringImageMouseOver("rain")}} onMouseOut={() => {this.offeringImageMouseOut("rain")}} src={(this.state.mouseOver.rain) ? RainLogo : RainLogoGray} className={(this.state.mouseOver.rain) ? "partner logo regular" : "partner logo gray"} style={{marginRight: '3vw', height: '5vh'}}/>
                                         </a>
                                         <a href="https://www.stellic.com/">
-                                            <img onMouseOver={() => {this.offeringImageMouseOver("stellic")}} onMouseOut={() => {this.offeringImageMouseOut("stellic")}} src={(this.state.mouseOver.stellic) ? StellicLogo : StellicLogoGray} style={{opacity: 0.1}} className="partner logo" style={{marginRight: '3vw'}} />
+                                            <img onMouseOver={() => {this.offeringImageMouseOver("stellic")}} onMouseOut={() => {this.offeringImageMouseOut("stellic")}} src={(this.state.mouseOver.stellic) ? StellicLogo : StellicLogoGray} style={{opacity: 0}} className={(this.state.mouseOver.stellic) ? "partner logo regular" : "partner logo gray"} style={{marginRight: '3vw'}} />
                                         </a>
                                         <a href="https://www.charthop.com/">
-                                            <img onMouseOver={() => {this.offeringImageMouseOver("charthop")}} onMouseOut={() => {this.offeringImageMouseOut("charthop")}} src={(this.state.mouseOver.charthop) ? CharthopLogo : CharthopLogoGray} style={{opacity: (this.state.mouseOver.charthop) ? 1 : 0.7}} className="partner logo" />
+                                            <img onMouseOver={() => {this.offeringImageMouseOver("charthop")}} onMouseOut={() => {this.offeringImageMouseOut("charthop")}} src={(this.state.mouseOver.charthop) ? CharthopLogo : CharthopLogoGray} style={{marginRight: '3vw'}} className={(this.state.mouseOver.charthop) ? "partner logo regular" : "partner logo gray"} />
+                                        </a>
+                                        <a href="https://www.lovevery.com/">
+                                            <img onMouseOver={() => {this.offeringImageMouseOver("lovevery")}} onMouseOut={() => {this.offeringImageMouseOut("lovevery")}} src={(this.state.mouseOver.lovevery) ? LoveEveryLogo : LoveEveryLogoGray} style={{marginRight: '3vw'}} className={(this.state.mouseOver.lovevery) ? "partner logo regular" : "partner logo gray"} />
+                                        </a>
+                                        <a href="https://www.fractalsoftware.com/">
+                                            <img onMouseOver={() => {this.offeringImageMouseOver("fractal")}} style={{height: '10vh'}} onMouseOut={() => {this.offeringImageMouseOut("fractal")}} src={(this.state.mouseOver.fractal) ? FractalLogo : FractalLogoGray} className={(this.state.mouseOver.fractal) ? "partner logo regular" : "partner logo gray"} />
                                         </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div style={{width: '100vw', height: 'max-content', paddingTop: '20vh'}}>
+                <div style={{width: '100vw', height: 'max-content', paddingTop: '30vh'}}>
                     <div ref={this.EquitySection} className="container content">
                         <div className="container content centered">
                             <div className="container feature">
@@ -197,7 +207,6 @@ export default class LandingHome extends React.Component {
                                     <a className="text feature tagline">List your equity.</a>
                                     <p className="text tagline smaller">As an existing shareholder, partition equity to list in our ecosystem, and in its place a token will be deployed.</p>
                                     <p className="text paragraph main" >In doing so, the equity will open up to retail investors, where you can get liquidity for you shares and continue to benefit.</p>
-                                    <button className="button nav">Learn More <FontAwesomeIcon icon={faLongArrowAltRight} /></button>
                                 </div>
                             </div>
                             <div className="container feature" style={{paddingTop: '10vh'}}>
@@ -207,7 +216,6 @@ export default class LandingHome extends React.Component {
                                     <p className="text paragraph main" >
                                         This enables your equity to be traded within our ecosystem. A portion of transactions will be returned to your startup.
                                     </p>
-                                    <button className="button nav">Learn More <FontAwesomeIcon icon={faLongArrowAltRight} /></button>
                                 </div>
                                 <img src={TokenGenerationGraphic} className="secondary image" style={{marginRight: '5vw'}} />
                             </div>
@@ -221,10 +229,9 @@ export default class LandingHome extends React.Component {
                                     <p className="text paragraph main" >
                                         Using our marketplace, you can explore various startups that have listed equity on our platform, view their profiles, and invest in them if you feel they have potential.
                                     </p>
-                                    <button className="button nav">Learn More <FontAwesomeIcon icon={faLongArrowAltRight} /></button>
                                 </div>
                             </div>
-                            <div className="container feature" style={{paddingTop: '10vh', paddingBottom: '10vh'}}>
+                            <div className="container feature" style={{paddingTop: '10vh', paddingBottom: '15vh'}}>
                                 <div className="container text main">
                                     <a className="text feature tagline">Grow your Portfolio.</a>
                                     <p className="text tagline smaller" >
@@ -233,7 +240,6 @@ export default class LandingHome extends React.Component {
                                     <p className="text paragraph main" >
                                         As you invest in promising startups, your holdings will fluctuate depending on the trading volume of their respective tokens. If you manage to pick out good startups early, your portfolio will grow, and you can either hold until the company IPO's, or liquidate early.
                                     </p>
-                                    <button className="button nav">Learn More <FontAwesomeIcon icon={faLongArrowAltRight} /></button>
                                 </div>
                                 <img src={PortfolioGraphic} className="secondary image"  style={{marginRight: '5vw'}} />
                             </div>
