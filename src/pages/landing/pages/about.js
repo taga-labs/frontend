@@ -92,7 +92,7 @@ export default class LandingAbout extends React.Component {
                         </div>
                         <a className="text about tagline smaller">Let's make something cool together.</a>
                         <br />
-                        <a className="text signin link" href="/careers" >Careers at Taga <span style={{fontSize: '1.5vh', marginLeft: '0.5vw', display: 'inline-block'}}><FontAwesomeIcon icon={faChevronRight} /></span></a>
+                        <a className="text signin link" href="https://linkedin.com/company/tagalabs" >Careers at Taga <span style={{fontSize: '1.5vh', marginLeft: '0.5vw', display: 'inline-block'}}><FontAwesomeIcon icon={faChevronRight} /></span></a>
                         <br />
                         <br />
                         <br />

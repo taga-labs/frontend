@@ -145,6 +145,7 @@
     background: linear-gradient(to right, #4F68B1, #AF6AAC);
     color: white;
     padding: 1vh;
+    margin-bottom: 5vh;
 }
 
 .button.wallet.neutral {
