@@ -126,9 +126,9 @@ class Registration extends React.Component {
                             selectedItem={this.state.currentStep}
                             showIndicators={false}
                         >
-                            <StepOne functions={this.functions} state={this.state} />
+                            {/* <StepOne functions={this.functions} state={this.state} /> */}
                             <StepTwo functions={this.functions} state={this.state} />
-                            <StepThree functions={this.functions} state={this.state} />
+                            {/* <StepThree functions={this.functions} state={this.state} /> */}
                             <Finished functions={this.functions} state={this.state} />
                         </Carousel>
                     </div>

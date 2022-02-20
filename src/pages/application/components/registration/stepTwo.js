@@ -135,7 +135,7 @@ class AccountType extends React.Component {
     }
 
     toAdditionalQuestions() {
-
+        this.props.functions.nextSlide(true);
     }
 
     render() {
@@ -178,7 +178,7 @@ class AccountType extends React.Component {
                 <div className="container onboarding footer content">
                     <div style={{width: '100%', display: 'flex', justifyContent: 'space-between'}}>
                         <a onClick={() => {this.props.functions.nextStep(false, this.props.state.accountInfo, "stepOne")}} className="text signin link"><FontAwesomeIcon icon={faLongArrowAltLeft} color={"#4F68B1"} /> Back to Account Credentials</a>
-                        <a onClick={() => { (this.state.data.shareholder || this.state.data.company || this.state.data.investor) ? this.props.functions.nextStep(true, this.state.data, "stepTwo") : this.toAdditionalQuestions()}} className="text signin link">Keep Going <FontAwesomeIcon icon={faLongArrowAltRight} color={"#AF6AAC"} /></a>
+                        <a onClick={() => { (this.state.data.investor) ? this.props.functions.nextStep(true, this.state.data, "stepTwo") : (this.state.data.shareholder || this.state.data.company) ? this.toAdditionalQuestions() : this.toggleError()}} className="text signin link">Keep Going <FontAwesomeIcon icon={faLongArrowAltRight} color={"#AF6AAC"} /></a>
                     </div>
                 </div>
             </div>
@@ -191,6 +191,7 @@ export default class StepTwo extends React.Component {
         super(props)
 
         this.state = {
+            currentSlide: 0,
             type: {
                 investor: false,
                 shareholder: false,
@@ -201,6 +202,11 @@ export default class StepTwo extends React.Component {
         }
 
         this.functions = this.props.functions;
+        this.functions.nextSlide = this.nextSlide.bind(this);
+    }
+
+    nextSlide(direction) {
+        this.setState({currentSlide: this.state.currentSlide + (direction) ? 1 : -1});
     }
 
     render() {
@@ -214,6 +220,7 @@ export default class StepTwo extends React.Component {
                     selectedItem={this.state.currentSlide}
                 >
                     <AccountType state={this.state} functions={this.functions} />
+                    <AdditionalQuestionsShareholder state={this.state} functions={this.functions} />
                 </Carousel>
             </div>
         )
