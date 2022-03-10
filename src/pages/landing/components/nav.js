@@ -12,7 +12,7 @@ import '../../../assets/styles/img.css';
 import '../../../assets/styles/interactions.css';
 
 // Images
-import LogoDarkBG from '../../../assets/img/logo-dark-bg.svg';
+import LogoDarkBG from '../../../assets/img/general/logo-dark-bg.svg';
 import { faBars, faChevronDown, faHamburger, faRocket } from '@fortawesome/free-solid-svg-icons';
 
 export default class LandingHome extends React.Component {

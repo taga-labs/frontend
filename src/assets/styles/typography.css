@@ -28,14 +28,17 @@
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 7vh;
     font-weight: bold;
-    animation: 1s ease-out 0s 1 navSlideIn;
     display: block;
 }
 
 .text.tagline.smaller {
-    font-size: 2.5vh;
+    font-size: 2vh;
     width: 30vw;
     animation: none;
+}
+
+.text.feature.tagline {
+    font-size: 5vh;
 }
 
 .text.keyword.tagline {
@@ -175,6 +178,22 @@
     font-family: 'Source Sans Pro', sans-serif;
     color: #0ad48b;
     user-select: none;
+}
+
+.text.shareholder.info.header {
+    font-size: 3vh;
+    font-family: 'Source Sans Pro', sans-serif;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.text.header.indicator {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-right: 1vw;
+    color: #AF6AAC;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 /* Animations */

@@ -14,7 +14,7 @@ import '../../../assets/styles/interactions.css';
 import '../../../assets/styles/img.css';
 
 // Images
-import LogoDarkBG from '../../../assets/img/logo-dark-bg.svg';
+import LogoDarkBG from '../../../assets/img/general/logo-dark-bg.svg';
 import { AuthenticationCheckAccount } from '../../../api';
 
 class WaitingList extends React.Component {
@@ -118,7 +118,7 @@ class SignIn extends React.Component {
                                     </div>
                                     <input onChange={this.onIdentifierChange} className="input create" placeholder="enter an identifier..." />
                                     <div className={"icon container input"}>
-                                        {(this.state.identifierCheck == true) ? <FontAwesomeIcon icon={faCheck} color={"#0ad48b"} /> : (this.state.identifierCheck == false) ? <FontAwesomeIcon icon={faTimes} color={"red"} /> : <FontAwesomeIcon icon={faCheck} color={"white"} />}
+                                        {(this.state.identifierCheck == true) ? <FontAwesomeIcon icon={faCheck} color={"#0ad48b"} /> : (this.state.identifierCheck == false) ? <FontAwesomeIcon icon={faTimes} color={"red"} /> : <FontAwesomeIcon icon={faCheck} color={"transparent"} />}
                                     </div>
                                 </div>
                                 <br />
