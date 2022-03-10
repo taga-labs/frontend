@@ -18,7 +18,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 // Images
 import MetaMaskLogo from '../../../../assets/img/3rd-party/metamask-fox.svg';
 import WalletConnectLogo from '../../../../assets/img/3rd-party/walletconnect-square-white.svg';
-import LogoLightBG from '../../../../assets/img/logo-light-bg.svg';
+import LogoLightBG from '../../../../assets/img/general/logo-light-bg.svg';
 
 import WalletConnect from "@walletconnect/client";
 import WalletConnectQRCodeModal from "@walletconnect/qrcode-modal";

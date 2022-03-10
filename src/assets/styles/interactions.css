@@ -145,6 +145,7 @@
     background: linear-gradient(to right, #4F68B1, #AF6AAC);
     color: white;
     padding: 1vh;
+    margin-bottom: 5vh;
 }
 
 .button.wallet.neutral {
@@ -157,6 +158,120 @@
 
 .button.wallet.error {
     border: 2px solid red;
+}
+
+.button.add.square {
+    width: 10vw;
+    height: 10vw;
+    font-size: 3vh;
+    color: lightgray;
+    border-radius: 7vh;
+    border: 2px solid lightgray;
+    transition: all 0.3s ease 0s;
+}
+
+.button.add.square:hover {
+    border: 2px solid#AF6AAC;
+    color: white;
+    /* border-radius: 7vh; */
+    cursor: pointer;
+    transform: translateY(-5px);
+    background-color: #AF6AAC;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button.company.profile.onboarding {
+    width: 10vw;
+    height: 10vw;
+    margin-right: 2vw;
+    border-radius: 20vh;
+    border: none;
+    font-size: 5vh;
+    color: black;
+    transition: all 0.3s ease 0s;
+}
+
+.button.company.profile.onboarding:hover {
+    opacity: 1;
+    border-radius: 5vh;
+    cursor: pointer;
+    transform: translateY(-5px);
+    background-color: #AF6AAC;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button.close.modal {
+    font-size: 2vh;
+    margin-right: 2vw;
+    margin-top: 2vw;
+    background-color: transparent;
+    border: none;
+    color: lightgray;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.button.close.modal:hover {
+    color: #AF6AAC;
+}
+
+.input.shareholder.info {
+    width: 100%;
+    border: none;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 3vh;
+    outline: none;
+}
+
+.input.shareholder.info::placeholder {
+    color: lightgray;
+}
+
+.button.shareholder.info.continue {
+    background-color: #AF6AAC;
+    color: white;
+    padding: 1vh;
+    border: none;
+    font-size: 2vh;
+    border-radius: 1vh;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.button.shareholder.info.continue:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: translateY(-5px);
+}
+
+.button.shareholder.dropdown {
+    font-size: 2vh;
+    padding: 1vh;
+    border-radius: 1vh;
+    border: none;
+    background-color: white;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    width: 20vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button.shareholder.dropdown:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button.shareholder.dropdown.element {
+    font-size: 2vh;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    width: 100%;
+    border: none;
+}
+
+.button.shareholder.dropdown.element:hover {
+    background-color: lightgray;
 }
 
 /* Mobile Re-scaling */
