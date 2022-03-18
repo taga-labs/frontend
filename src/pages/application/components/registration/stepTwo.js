@@ -465,6 +465,7 @@ class AdditionalQuestionsShareholder extends React.Component {
         this.addCompany = this.addCompany.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.removeCompany = this.removeCompany.bind(this);
+        this.updateCompany = this.updateCompany.bind(this);
 
         this.functions.addCompany = this.addCompany;
         this.functions.removeCompany = this.removeCompany;
@@ -479,6 +480,16 @@ class AdditionalQuestionsShareholder extends React.Component {
         var newCompaniesList = this.state.companies;
         newCompaniesList.splice(index, 1);
         this.setState({companies: newCompaniesList});
+    }
+
+    updateCompany(index, newCompany) {
+        var currentCompanies = this.state.companies;
+
+        currentCompanies[index] = newCompany;
+
+        this.setState({
+            companies: currentCompanies
+        });
     }
 
     addCompany(newCompany) {
