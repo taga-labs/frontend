@@ -472,6 +472,10 @@ class AdditionalQuestionsShareholder extends React.Component {
         this.functions.toggleModal = this.toggleModal;
     }
 
+    componentDidUpdate() {
+        
+    }
+
     toggleModal(companyIndex) {
         this.setState({modal: !this.state.modal, editingIndex: companyIndex});
     }
