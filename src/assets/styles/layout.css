@@ -369,12 +369,17 @@
 }
 
 .container.companies {
-    width: 150%;
+    width: 100%;
     height: 65vh;
     text-align: left;
     padding: 2vh;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    overflow-y: scroll;
+    padding-right: 17px;
+    box-sizing: content-box;
+    justify-content: center;
 }
 
 .container.shareholder.modal {
@@ -424,6 +429,24 @@
     justify-content: center;
     height: 50vh;
     width: 50vw;
+}
+
+.container.button.shareholder {
+    position: relative;
+    width: max-content;
+    height: max-content;
+    margin-right: 2vw;
+    transition: all 0.3s ease 0s;
+    border-radius: 5vh;
+    cursor: pointer;
+}
+
+
+.container.button.shareholder:hover {
+    opacity: 1;
+    cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* Animations */

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faLongArrowAltLeft, faLongArrowAltRight, faCheck, faTimes, faUser, faLock, faPlusSquare, faBuilding, faArrowRight, faChevronRight, faChevronDown, faChevronUp, faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faLongArrowAltLeft, faLongArrowAltRight, faCheck, faTimes, faUser, faLock, faPlusSquare, faBuilding, faArrowRight, faChevronRight, faChevronDown, faChevronUp, faArrowDown, faArrowUp, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 // Carousel module
 import { Carousel } from 'react-responsive-carousel';
@@ -55,22 +55,6 @@ class AdditionalQuestionsStartup extends React.Component {
     }
 }
 
-class ShareholderInfoButton extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return(
-            <button onClick={this.props.toggleModal} className="button company profile onboarding" style={{backgroundColor: 'red'}}>
-                <FontAwesomeIcon icon={faBuilding} style={{opacity: 0.5}} />
-                <br />
-                <a style={{fontSize: '2vh', opacity: 0.5, marginTop: '-3vh'}}>Taga Labs</a>
-            </button>
-        )
-    }
-}
-
 class ShareholderInfoSlideShow extends React.Component {
     constructor(props) {
         super(props);
@@ -85,19 +69,19 @@ class ShareholderInfoSlideShow extends React.Component {
                     "Alternative Dispute Resolution", 
                     "Alternative Medicine",
                     "Animation",
-                    "Apparel &amp; Fashion",
-                    "Aviation &amp; Aerospace",
+                    "Apparel & Fashion",
+                    "Aviation & Aerospace",
                     "Banking",
                     "Biotechnology",
                     "Broadcast Media",
                     "Building Materials",
-                    "Business Supplies &amp; Equipment",
+                    "Business Supplies & Equipment",
                     "Capital Markets",
                     "Chemicals",
-                    "Civic &amp; Social Organization",
+                    "Civic & Social Organization",
                     "Civil Engineering",
                     "Commercial Real Estate",
-                    "Computer &amp; Network Security",
+                    "Computer & Network Security",
                     "Computer Games",
                     "Computer Hardware",
                     "Computer Networking",
@@ -108,11 +92,11 @@ class ShareholderInfoSlideShow extends React.Component {
                     "Consumer Services",
                     "Cosmetics",
                     "Dairy",
-                    "Defense &amp; Space",
+                    "Defense & Space",
                     "Design",
                     "E-learning",
                     "Education Management",
-                    "Electrical &amp; Electronic Manufacturing",
+                    "Electrical & Electronic Manufacturing",
                     "Entertainment",
                     "Environmental Services",
                     "Events Services",
@@ -122,28 +106,28 @@ class ShareholderInfoSlideShow extends React.Component {
                     "Financial Services",
                     "Fine Art",
                     "Fishery",
-                    "Food &amp; Beverages",
+                    "Food & Beverages",
                     "Food Production",
                     "Fundraising",
                     "Furniture",
-                    "Gambling &amp; Casinos",
-                    "Glass, Ceramics &amp; Concrete",
+                    "Gambling & Casinos",
+                    "Glass, Ceramics & Concrete",
                     "Government Administration",
                     "Government Relations",
                     "Graphic Design",
-                    "Health, Wellness &amp; Fitness",
+                    "Health, Wellness & Fitness",
                     "Higher Education",
-                    "Hospital &amp; Health Care",
+                    "Hospital & Health Care",
                     "Hospitality",
                     "Human Resources",
-                    "Import &amp; Export",
-                    "Individual &amp; Family Services",
+                    "Import & Export",
+                    "Individual & Family Services",
                     "Industrial Automation",
                     "Information Services",
-                    "Information Technology &amp; Services",
+                    "Information Technology & Services",
                     "Insurance",
                     "International Affairs",
-                    "International Trade &amp; Development",
+                    "International Trade & Development",
                     "Internet",
                     "Investment Banking",
                     "Investment Management",
@@ -152,35 +136,35 @@ class ShareholderInfoSlideShow extends React.Component {
                     "Law Practice",
                     "Legal Services",
                     "Legislative Office",
-                    "Leisure, Travel &amp; Tourism",
+                    "Leisure, Travel & Tourism",
                     "Libraries",
-                    "Logistics &amp; Supply Chain",
-                    "Luxury Goods &amp; Jewelry",
+                    "Logistics & Supply Chain",
+                    "Luxury Goods & Jewelry",
                     "Machinery",
                     "Management Consulting",
                     "Maritime",
                     "Market Research",
-                    "Marketing &amp; Advertising",
+                    "Marketing & Advertising",
                     "Mechanical Or Industrial Engineering",
                     "Media Production",
                     "Medical Device",
                     "Medical Practice",
                     "Mental Health Care",
                     "Military",
-                    "Mining &amp; Metals",
+                    "Mining & Metals",
                     "Mobile Games",
-                    "Motion Pictures &amp; Film",
-                    "Museums &amp; Institutions",
+                    "Motion Pictures & Film",
+                    "Museums & Institutions",
                     "Music",
                     "Nanotechnology",
                     "Newspapers",
                     "Non-profit Organization Management",
-                    "Oil &amp; Energy",
+                    "Oil & Energy",
                     "Online Media",
                     "Outsourcing/Offshoring",
                     "Package/Freight Delivery",
-                    "Packaging &amp; Containers",
-                    "Paper &amp; Forest Products",
+                    "Packaging & Containers",
+                    "Paper & Forest Products",
                     "Performing Arts",
                     "Pharmaceuticals",
                     "Philanthropy",
@@ -189,42 +173,42 @@ class ShareholderInfoSlideShow extends React.Component {
                     "Political Organization",
                     "Primary/Secondary Education",
                     "Printing",
-                    "Professional Training &amp; Coaching",
+                    "Professional Training & Coaching",
                     "Program Development",
                     "Public Policy",
-                    "Public Relations &amp; Communications",
+                    "Public Relations & Communications",
                     "Public Safety",
                     "Publishing",
                     "Railroad Manufacture",
                     "Ranching",
                     "Real Estate",
-                    "Recreational Facilities &amp; Services",
+                    "Recreational Facilities & Services",
                     "Religious Institutions",
-                    "Renewables &amp; Environment",
+                    "Renewables & Environment",
                     "Research",
                     "Restaurants",
                     "Retail",
-                    "Security &amp; Investigations",
+                    "Security & Investigations",
                     "Semiconductors",
                     "Shipbuilding",
                     "Sporting Goods",
                     "Sports",
-                    "Staffing &amp; Recruiting",
+                    "Staffing & Recruiting",
                     "Supermarkets",
                     "Telecommunications",
                     "Textiles",
                     "Think Tanks",
                     "Tobacco",
-                    "Translation &amp; Localization",
+                    "Translation & Localization",
                     "Transportation/Trucking/Railroad",
                     "Utilities",
-                    "Venture Capital &amp; Private Equity",
+                    "Venture Capital & Private Equity",
                     "Veterinary",
                     "Warehousing",
                     "Wholesale",
-                    "Wine &amp; Spirits",
+                    "Wine & Spirits",
                     "Wireless",
-                    "Writing &amp; Editing"
+                    "Writing & Editing"
                 ],
 
                 size: [
@@ -250,10 +234,11 @@ class ShareholderInfoSlideShow extends React.Component {
                 ]
             },
             questions: {
-                name: null,
-                size: null,
-                industry: null,
-                type: null,
+                name: (this.props.editingIndex != null) ? this.props.state.companies[this.props.editingIndex].name : null,
+                size: (this.props.editingIndex != null) ? this.props.state.companies[this.props.editingIndex].size : null,
+                industry: (this.props.editingIndex != null) ? this.props.state.companies[this.props.editingIndex].industry : null,
+                type: (this.props.editingIndex != null) ? this.props.state.companies[this.props.editingIndex].type : null,
+                link: (this.props.editingIndex != null) ? this.props.state.companies[this.props.editingIndex].link : null
             }
         };
 
@@ -264,15 +249,15 @@ class ShareholderInfoSlideShow extends React.Component {
         this.slideBack = this.slideBack.bind(this);
     }
 
-    componentDidUpdate() {
-        console.log(this.state)
-    }
-
     onQuestionSubmit(e, type) {
         e.preventDefault();
 
         if(this.state.questions[type] != null && this.state.questions[type] != "") {
-            this.setState({currentSlide: this.state.currentSlide + 1});
+            if(type == "link") {
+                this.props.functions.addCompany(this.state.questions);
+            } else {
+                this.setState({currentSlide: this.state.currentSlide + 1});
+            }
         }
     }
 
@@ -280,9 +265,6 @@ class ShareholderInfoSlideShow extends React.Component {
         var state = this.state;
 
         state.questions[key] = e.target.value;
-
-
-        console.log(state)
 
         this.setState(state);
     }
@@ -340,7 +322,7 @@ class ShareholderInfoSlideShow extends React.Component {
                             <br />
                             <br />
                             <form onSubmit={(e) => {this.onQuestionSubmit(e, "name")}}>
-                                <input onKeyUp={(e) => { this.onTextChange(e, "name") }} className="input shareholder info" placeholder="Type your answer here..."></input>
+                                <input onChange={(e) => { this.onTextChange(e, "name") }} value={this.state.questions.name} className="input shareholder info" placeholder="Type your answer here..."></input>
                                 <br />
                                 <br />
                                 <button type="submit" className="button shareholder info continue">Continue <FontAwesomeIcon icon={faArrowDown} /></button>
@@ -361,7 +343,8 @@ class ShareholderInfoSlideShow extends React.Component {
                                             backgroundColor: "white",
                                             visibility: (this.state.displayDropdown) ? "visible" : "hidden",
                                             height: '20vh',
-                                            overflowY: "scroll"
+                                            overflowY: "scroll",
+                                            width: '20vw'
                                         }}
                                     >
                                         {getSizeDropdownElements()}
@@ -387,7 +370,8 @@ class ShareholderInfoSlideShow extends React.Component {
                                             backgroundColor: "white",
                                             visibility: (this.state.displayDropdown) ? "visible" : "hidden",
                                             height: '20vh',
-                                            overflowY: "scroll"
+                                            overflowY: "scroll",
+                                            width: '20vw'
                                         }}
                                     >
                                         {getIndustriesDropdownElements()}
@@ -413,7 +397,8 @@ class ShareholderInfoSlideShow extends React.Component {
                                             backgroundColor: "white",
                                             visibility: (this.state.displayDropdown) ? "visible" : "hidden",
                                             height: '20vh',
-                                            overflowY: "scroll"
+                                            overflowY: "scroll",
+                                            width: '20vw'
                                         }}
                                     >
                                         {getCompanyTypeDropdownElements()}
@@ -424,23 +409,43 @@ class ShareholderInfoSlideShow extends React.Component {
                                     <button onClick={this.slideBack} className="button shareholder info continue" style={{marginLeft: '1vw', backgroundColor: "lightgray", color: 'black'}}>Back <FontAwesomeIcon icon={faArrowUp} /></button>
                                 </div>
                         </div>
-                        <div className="container shareholder slide content">
-                            <a className="text header indicator"><a style={{fontSize: '3vh', display: 'inline-block', verticalAlign: 'middle'}}>{this.state.currentSlide + 1}</a> <FontAwesomeIcon icon={faChevronRight} size={25} style={{display: 'inline-block', verticalAlign: 'middle'}} /></a>
-                            <div style={{textAlign: 'left'}}>
-                                <a className="text shareholder info header"> Share a link to your company website.</a>
-                                <br />
-                                <br />
-                                <form onSubmit={(e) => {this.onQuestionSubmit(e, "name")}}>
-                                    <input onKeyUp={this.onLinkChange} className="input shareholder info" placeholder="Type your answer here..."></input>
-                                    <br />
-                                    <br />
-                                    <button type="submit" className="button shareholder info continue">Continue <FontAwesomeIcon icon={faArrowDown} /></button>
-                                </form>
-                            </div>
+                    </div>
+                    <div className="container shareholder slide content">
+                        <a className="text header indicator"><a style={{fontSize: '3vh', display: 'inline-block', verticalAlign: 'middle'}}>{this.state.currentSlide + 1}</a> <FontAwesomeIcon icon={faChevronRight} size={25} style={{display: 'inline-block', verticalAlign: 'middle'}} /></a>
+                        <div style={{textAlign: 'left'}}>
+                            <a className="text shareholder info header"> Share a link to your company website.</a>
+                            <br />
+                            <br />
+                            <input onKeyUp={(e) =>{ this.onTextChange(e, "link") }} value={this.state.questions.link} className="input shareholder info" placeholder="Type your answer here..."></input>
+                            <br />
+                            <br />
+                            <button onClick={(e) => {this.onQuestionSubmit(e, "link")}} className="button shareholder info continue">Finished <FontAwesomeIcon icon={faThumbsUp} /></button>
+                            <button onClick={this.slideBack} className="button shareholder info continue" style={{marginLeft: '1vw', backgroundColor: "lightgray", color: 'black'}}>Back <FontAwesomeIcon icon={faArrowUp} /></button>
                         </div>
                     </div>
                 </Carousel>        
         );
+    }
+}
+
+class ShareholderInfoButton extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return(
+            <div className="container button shareholder">
+                <button onClick={(e) => { this.props.functions.toggleModal(this.props.index) }} className="button company profile onboarding" style={{backgroundColor: this.props.data.color}}>
+                    <FontAwesomeIcon icon={faBuilding} style={{opacity: 0.5}} />
+                    <br />
+                    <a style={{fontSize: '2vh', opacity: 0.5, marginTop: '-3vh'}}>{this.props.data.name}</a>
+                </button>
+                <button onClick={(e) => { this.props.functions.removeCompany(this.props.index)}} className="button delete company">
+                    <FontAwesomeIcon icon={faTimes} />
+                </button>
+            </div>
+        )
     }
 }
 
@@ -450,34 +455,60 @@ class AdditionalQuestionsShareholder extends React.Component {
 
         this.state = {
             modal: false,
+            editingIndex: null,
             companies: [],
             colors: ["#9BD3CB", "#FCBCBC", "#F39CA4", "#EDDDD1", "#2D7F9D", "#DC7684", "#E4CA99", "#A4C9D7"]
         }
 
+        this.functions = this.props.functions;
+
         this.addCompany = this.addCompany.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.removeCompany = this.removeCompany.bind(this);
+
+        this.functions.addCompany = this.addCompany;
+        this.functions.removeCompany = this.removeCompany;
+        this.functions.toggleModal = this.toggleModal;
     }
 
-    toggleModal() {
-        this.setState({modal: !this.state.modal});
+    toggleModal(companyIndex) {
+        this.setState({modal: !this.state.modal, editingIndex: companyIndex});
     }
 
-    addCompany() {
+    removeCompany(index) {
+        var newCompaniesList = this.state.companies;
+        newCompaniesList.splice(index, 1);
+        this.setState({companies: newCompaniesList});
+    }
+
+    addCompany(newCompany) {
         var currentCompanies = this.state.companies;
+        var currentColors = this.state.colors;
+
+        var randIndex = Math.floor(Math.random() * this.state.colors.length);
+        var randColor = this.state.colors[randIndex];
+        this.state.colors.splice(randIndex, 1);
 
         currentCompanies.push({
-            name: null,
-            relation: null,
-            numShares: null
+            name: newCompany.name,
+            size: newCompany.size,
+            industry: newCompany.industry,
+            type: newCompany.type,
+            link: newCompany.link,
+            color: randColor
         });
 
-        this.setState({companies: currentCompanies});
+        this.setState({
+            modal: false,
+            colors: currentColors,
+            companies: currentCompanies
+        });
     }
 
     render() {
         const displayCompanies = () => {
             return this.state.companies.map((company, index) => {
-                return <ShareholderInfoButton key={index} toggleModal={this.toggleModal} data={company} />
+                return <ShareholderInfoButton key={index} index={index} functions={this.functions} data={company} />
             });
         }
 
@@ -490,10 +521,8 @@ class AdditionalQuestionsShareholder extends React.Component {
                         <br />
                         <br />
                         <div className="container companies">
-                            <div>
-                                {displayCompanies()}
-                            </div>
-                            <button onClick={this.toggleModal} className="button add square">
+                            {displayCompanies()}
+                            <button onClick={() => { this.toggleModal(null) }} className="button add square">
                                 <FontAwesomeIcon icon={faPlusSquare} />
                             </button>
                         </div>
@@ -513,7 +542,7 @@ class AdditionalQuestionsShareholder extends React.Component {
                                 </button>
                             </div>
                             <div className="container shareholder modal content">
-                                <ShareholderInfoSlideShow />
+                                <ShareholderInfoSlideShow functions={this.props.functions} state={this.state} editingIndex={this.state.editingIndex} />
                             </div>
                         </div>
                     </div>
@@ -706,8 +735,8 @@ export default class StepTwo extends React.Component {
                     selectedItem={this.state.currentSlide}
                     showIndicators={false}
                 >
-                    <AccountType state={this.state} functions={this.functions} />
-                    <AdditionalQuestionsFullName state={this.props.state} functions={this.props.functions} />
+                    {/* <AccountType state={this.state} functions={this.functions} /> */}
+                    {/* <AdditionalQuestionsFullName state={this.props.state} functions={this.props.functions} /> */}
                     <AdditionalQuestionsShareholder state={this.props.state} functions={this.props.functions} />
                 </Carousel>
             </div>

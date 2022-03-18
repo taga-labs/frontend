@@ -165,7 +165,7 @@
     height: 10vw;
     font-size: 3vh;
     color: lightgray;
-    border-radius: 7vh;
+    border-radius: 5vh;
     border: 2px solid lightgray;
     transition: all 0.3s ease 0s;
 }
@@ -183,21 +183,12 @@
 .button.company.profile.onboarding {
     width: 10vw;
     height: 10vw;
-    margin-right: 2vw;
-    border-radius: 20vh;
+    border-radius: 5vh;
     border: none;
     font-size: 5vh;
     color: black;
     transition: all 0.3s ease 0s;
-}
-
-.button.company.profile.onboarding:hover {
-    opacity: 1;
-    border-radius: 5vh;
     cursor: pointer;
-    transform: translateY(-5px);
-    background-color: #AF6AAC;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .button.close.modal {
@@ -272,6 +263,22 @@
 
 .button.shareholder.dropdown.element:hover {
     background-color: lightgray;
+}
+
+.button.delete.company {
+    font-size: 2vh;
+    opacity: 0.2;
+    position: absolute;
+    top: 3vh;
+    right: 3vh;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.button.delete.company:hover{
+    opacity: 0.5;
 }
 
 /* Mobile Re-scaling */
