@@ -69,6 +69,10 @@ class Registration extends React.Component {
         }
     }
 
+    componentDidUpdate() {
+        console.log(this.state);
+    }
+
     nextStep(direction, data, step) {
         var incStep = (direction) ? this.state.currentStep+1 : this.state.currentStep-1;
 
@@ -93,6 +97,18 @@ class Registration extends React.Component {
                 walletconnect: (finalState.data.stepThree.walletConnectAccounts != false) ? true : false,
                 taga: (finalState.data.stepThree.tagaAccounts != false) ? true : false
             }
+        }
+
+        if(obj.data.stepTwo.shareholder || obj.data.stepTwo.company) {
+            createAccountObj.fullName = obj.data.stepTwo.shareholderName;
+        }
+
+        if(obj.data.stepTwo.shareholder) {
+            createAccountObj.shareholderInfo = obj.data.stepTwo.shareholderInfo;
+        }
+
+        if(obj.data.stepThree.company) {
+            createAccountObj.companyInfo = obj.data.stepTwo.companyInfo
         }
 
         AuthenticationCreateAccount(createAccountObj).then((results) => {
@@ -126,9 +142,9 @@ class Registration extends React.Component {
                             selectedItem={this.state.currentStep}
                             showIndicators={false}
                         >
-                            {/* <StepOne functions={this.functions} state={this.state} /> */}
+                            <StepOne functions={this.functions} state={this.state} />
                             <StepTwo functions={this.functions} state={this.state} />
-                            {/* <StepThree functions={this.functions} state={this.state} /> */}
+                            <StepThree functions={this.functions} state={this.state} />
                             <Finished functions={this.functions} state={this.state} />
                         </Carousel>
                     </div>

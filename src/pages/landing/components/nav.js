@@ -50,7 +50,6 @@ export default class LandingHome extends React.Component {
                     <div className="container button navigation">
                         <a href="/signin" className="text link signin">Sign In</a>
                         {(!this.state.mobileRescale) ? <button onClick={() => {window.location.href="/get-started"}} className="button nav">
-                            <FontAwesomeIcon icon={faRocket} style={{marginRight: '0.5vw'}} />
                             Register
                         </button> : <></>}
                         <button onClick={() => { this.props.methods.toggleMobileMenu() }} className="button hamburger">

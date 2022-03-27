@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Modal from '@mui/material/Modal';
+
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faLongArrowAltLeft, faLongArrowAltRight, faCheck, faTimes, faUser, faLock, faPlusSquare, faBuilding, faArrowRight, faChevronRight, faChevronDown, faChevronUp, faArrowDown, faArrowUp, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 // Carousel module
 import { Carousel } from 'react-responsive-carousel';
-
-import Modal from '@mui/material/Modal';
 
 // Stylesheets
 import '../../../../assets/styles/layout.css';
@@ -55,7 +55,7 @@ class AdditionalQuestionsStartup extends React.Component {
     }
 }
 
-class ShareholderInfoSlideShow extends React.Component {
+class ShareholderInfo extends React.Component {
     constructor(props) {
         super(props);
 
@@ -254,7 +254,11 @@ class ShareholderInfoSlideShow extends React.Component {
 
         if(this.state.questions[type] != null && this.state.questions[type] != "") {
             if(type == "link") {
-                this.props.functions.addCompany(this.state.questions);
+                if(this.props.editingIndex == null) {
+                    this.props.functions.addCompany(this.state.questions);
+                } else {
+                    this.props.functions.updateCompany(this.state.questions, this.props.editingIndex);
+                }
             } else {
                 this.setState({currentSlide: this.state.currentSlide + 1});
             }
@@ -306,124 +310,136 @@ class ShareholderInfoSlideShow extends React.Component {
         }
 
         return(
-                <Carousel
-                    showArrows={false}
-                    showStatus={false}
-                    swipeable={false}
-                    showThumbs={false}
-                    selectedItem={this.state.currentSlide}
-                    showIndicators={false}
-                    axis={'vertical'}
-                >
-                    <div className="container shareholder slide content">
-                        <a className="text header indicator"><a style={{fontSize: '3vh', display: 'inline-block', verticalAlign: 'middle'}}>{this.state.currentSlide + 1}</a> <FontAwesomeIcon icon={faChevronRight} size={25} style={{display: 'inline-block', verticalAlign: 'middle'}} /></a>
-                        <div style={{textAlign: 'left'}}>
-                            <a className="text shareholder info header"> What is the name of the company you hold?</a>
-                            <br />
-                            <br />
-                            <form onSubmit={(e) => {this.onQuestionSubmit(e, "name")}}>
-                                <input onChange={(e) => { this.onTextChange(e, "name") }} value={this.state.questions.name} className="input shareholder info" placeholder="Type your answer here..."></input>
-                                <br />
-                                <br />
-                                <button type="submit" className="button shareholder info continue">Continue <FontAwesomeIcon icon={faArrowDown} /></button>
-                            </form>
-                        </div>
+                <div className="container shareholder modal interior">
+                    <div className="container shareholder modal header">
+                        <button
+                            onClick={(this.props.editingIndex) ? this.props.functions.toggleModal : () => { this.props.functions.updateCompany(this.state.questions, this.props.editingIndex) }}
+                            className="button close modal"
+                        >
+                            <FontAwesomeIcon icon={faTimes} />
+                        </button>
                     </div>
-                    <div className="container shareholder slide content">
-                        <a className="text header indicator"><a style={{fontSize: '3vh', display: 'inline-block', verticalAlign: 'middle'}}>{this.state.currentSlide + 1}</a> <FontAwesomeIcon icon={faChevronRight} size={25} style={{display: 'inline-block', verticalAlign: 'middle'}} /></a>
-                        <div style={{textAlign: 'left', display: 'inline-block', verticalAlign: 'top'}}>
-                            <a className="text shareholder info header"> What is the approximate size of this company?</a>
-                            <br />
-                            <br />
-                                <div style={{position: 'absolute'}}>
-                                <button onClick={this.displayDropdown} style={{borderBottomLeftRadius: (this.state.displayDropdown) ? "0vh" : "1vh", borderBottomRightRadius: (this.state.displayDropdown) ? "0vh" : "1vh"}} className="button shareholder dropdown">{(this.state.questions.size) ? this.state.questions.size : "Select Company Size"} <FontAwesomeIcon icon={(this.state.displayDropdown) ? faChevronUp : faChevronDown} style={{marginLeft: '1vw'}} /></button>
-                                    <div
-                                        style={{
-                                            position: 'absolute',
-                                            backgroundColor: "white",
-                                            visibility: (this.state.displayDropdown) ? "visible" : "hidden",
-                                            height: '20vh',
-                                            overflowY: "scroll",
-                                            width: '20vw'
-                                        }}
-                                    >
-                                        {getSizeDropdownElements()}
-                                    </div>
+                    <div className="container shareholder modal content">
+                        <Carousel
+                            showArrows={false}
+                            showStatus={false}
+                            swipeable={false}
+                            showThumbs={false}
+                            selectedItem={this.state.currentSlide}
+                            showIndicators={false}
+                            axis={'vertical'}
+                        >
+                            <div className="container shareholder slide content">
+                                <a className="text header indicator"><a style={{fontSize: '3vh', display: 'inline-block', verticalAlign: 'middle'}}>{this.state.currentSlide + 1}</a> <FontAwesomeIcon icon={faChevronRight} size={25} style={{display: 'inline-block', verticalAlign: 'middle'}} /></a>
+                                <div style={{textAlign: 'left'}}>
+                                    <a className="text shareholder info header"> What is the name of the company you hold?</a>
                                     <br />
                                     <br />
-                                    <button onClick={(e) => { this.onQuestionSubmit(e, "size") }} className="button shareholder info continue">Continue <FontAwesomeIcon icon={faArrowDown} /></button>
+                                    <form onSubmit={(e) => {this.onQuestionSubmit(e, "name")}}>
+                                        <input onChange={(e) => { this.onTextChange(e, "name") }} value={this.state.questions.name} className="input shareholder info" placeholder="Type your answer here..."></input>
+                                        <br />
+                                        <br />
+                                        <button type="submit" className="button shareholder info continue">Continue <FontAwesomeIcon icon={faArrowDown} /></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div className="container shareholder slide content">
+                                <a className="text header indicator"><a style={{fontSize: '3vh', display: 'inline-block', verticalAlign: 'middle'}}>{this.state.currentSlide + 1}</a> <FontAwesomeIcon icon={faChevronRight} size={25} style={{display: 'inline-block', verticalAlign: 'middle'}} /></a>
+                                <div style={{textAlign: 'left', display: 'inline-block', verticalAlign: 'top'}}>
+                                    <a className="text shareholder info header"> What is the approximate size of this company?</a>
+                                    <br />
+                                    <br />
+                                        <div style={{position: 'absolute'}}>
+                                        <button onClick={this.displayDropdown} style={{borderBottomLeftRadius: (this.state.displayDropdown) ? "0vh" : "1vh", borderBottomRightRadius: (this.state.displayDropdown) ? "0vh" : "1vh"}} className="button shareholder dropdown">{(this.state.questions.size) ? this.state.questions.size : "Select Company Size"} <FontAwesomeIcon icon={(this.state.displayDropdown) ? faChevronUp : faChevronDown} style={{marginLeft: '1vw'}} /></button>
+                                            <div
+                                                style={{
+                                                    position: 'absolute',
+                                                    backgroundColor: "white",
+                                                    visibility: (this.state.displayDropdown) ? "visible" : "hidden",
+                                                    height: '20vh',
+                                                    overflowY: "scroll",
+                                                    width: '20vw'
+                                                }}
+                                            >
+                                                {getSizeDropdownElements()}
+                                            </div>
+                                            <br />
+                                            <br />
+                                            <button onClick={(e) => { this.onQuestionSubmit(e, "size") }} className="button shareholder info continue">Continue <FontAwesomeIcon icon={faArrowDown} /></button>
+                                            <button onClick={this.slideBack} className="button shareholder info continue" style={{marginLeft: '1vw', backgroundColor: "lightgray", color: 'black'}}>Back <FontAwesomeIcon icon={faArrowUp} /></button>
+                                        </div>
+                                </div>
+                            </div>
+                            <div className="container shareholder slide content">
+                                <a className="text header indicator"><a style={{fontSize: '3vh', display: 'inline-block', verticalAlign: 'middle'}}>{this.state.currentSlide + 1}</a> <FontAwesomeIcon icon={faChevronRight} size={25} style={{display: 'inline-block', verticalAlign: 'middle'}} /></a>
+                                <div style={{textAlign: 'left', display: 'inline-block', verticalAlign: 'top'}}>
+                                    <a className="text shareholder info header"> What industry does this company operate in?</a>
+                                    <br />
+                                    <br />
+                                        <div style={{position: 'absolute'}}>
+                                            <button onClick={this.displayDropdown} style={{borderBottomLeftRadius: (this.state.displayDropdown) ? "0vh" : "1vh", borderBottomRightRadius: (this.state.displayDropdown) ? "0vh" : "1vh"}} className="button shareholder dropdown">{(this.state.questions.industry) ? this.state.questions.industry : "Select Industry"} <FontAwesomeIcon icon={(this.state.displayDropdown) ? faChevronUp : faChevronDown} style={{marginLeft: '1vw'}} /></button>
+                                            <div
+                                                style={{
+                                                    position: 'absolute',
+                                                    backgroundColor: "white",
+                                                    visibility: (this.state.displayDropdown) ? "visible" : "hidden",
+                                                    height: '20vh',
+                                                    overflowY: "scroll",
+                                                    width: '20vw'
+                                                }}
+                                            >
+                                                {getIndustriesDropdownElements()}
+                                            </div>
+                                            <br />
+                                            <br />
+                                            <button onClick={(e) => { this.onQuestionSubmit(e, "industry") }} type="submit" className="button shareholder info continue">Continue <FontAwesomeIcon icon={faArrowDown} /></button>
+                                            <button onClick={this.slideBack} className="button shareholder info continue" style={{marginLeft: '1vw', backgroundColor: "lightgray", color: 'black'}}>Back <FontAwesomeIcon icon={faArrowUp} /></button>
+                                        </div>
+                                </div>
+                            </div>
+                            <div className="container shareholder slide content">
+                                <a className="text header indicator"><a style={{fontSize: '3vh', display: 'inline-block', verticalAlign: 'middle'}}>{this.state.currentSlide + 1}</a> <FontAwesomeIcon icon={faChevronRight} size={25} style={{display: 'inline-block', verticalAlign: 'middle'}} /></a>
+                                <div style={{textAlign: 'left', display: 'inline-block', verticalAlign: 'top'}}>
+                                    <a className="text shareholder info header"> What type of entity is this company?</a>
+                                    <br />
+                                    <br />
+                                        <div style={{position: 'absolute'}}>
+                                            <button onClick={this.displayDropdown} style={{borderBottomLeftRadius: (this.state.displayDropdown) ? "0vh" : "1vh", borderBottomRightRadius: (this.state.displayDropdown) ? "0vh" : "1vh"}} className="button shareholder dropdown">{(this.state.questions.type) ? this.state.questions.type : "Select Company Type"} <FontAwesomeIcon icon={(this.state.displayDropdown) ? faChevronUp : faChevronDown} style={{marginLeft: '1vw'}} /></button>
+                                            <div
+                                                style={{
+                                                    position: 'absolute',
+                                                    backgroundColor: "white",
+                                                    visibility: (this.state.displayDropdown) ? "visible" : "hidden",
+                                                    height: '20vh',
+                                                    overflowY: "scroll",
+                                                    width: '20vw'
+                                                }}
+                                            >
+                                                {getCompanyTypeDropdownElements()}
+                                            </div>
+                                            <br />
+                                            <br />
+                                            <button onClick={(e) => { this.onQuestionSubmit(e, "industry") }} type="submit" className="button shareholder info continue">Continue <FontAwesomeIcon icon={faArrowDown} /></button>
+                                            <button onClick={this.slideBack} className="button shareholder info continue" style={{marginLeft: '1vw', backgroundColor: "lightgray", color: 'black'}}>Back <FontAwesomeIcon icon={faArrowUp} /></button>
+                                        </div>
+                                </div>
+                            </div>
+                            <div className="container shareholder slide content">
+                                <a className="text header indicator"><a style={{fontSize: '3vh', display: 'inline-block', verticalAlign: 'middle'}}>{this.state.currentSlide + 1}</a> <FontAwesomeIcon icon={faChevronRight} size={25} style={{display: 'inline-block', verticalAlign: 'middle'}} /></a>
+                                <div style={{textAlign: 'left'}}>
+                                    <a className="text shareholder info header"> Share a link to your company website.</a>
+                                    <br />
+                                    <br />
+                                    <input onChange={(e) =>{ this.onTextChange(e, "link") }} value={this.state.questions.link} className="input shareholder info" placeholder="Type your answer here..."></input>
+                                    <br />
+                                    <br />
+                                    <button onClick={(e) => {this.onQuestionSubmit(e, "link")}} className="button shareholder info continue">Finished <FontAwesomeIcon icon={faThumbsUp} /></button>
                                     <button onClick={this.slideBack} className="button shareholder info continue" style={{marginLeft: '1vw', backgroundColor: "lightgray", color: 'black'}}>Back <FontAwesomeIcon icon={faArrowUp} /></button>
                                 </div>
-                        </div>
+                            </div>
+                        </Carousel>
                     </div>
-                    <div className="container shareholder slide content">
-                        <a className="text header indicator"><a style={{fontSize: '3vh', display: 'inline-block', verticalAlign: 'middle'}}>{this.state.currentSlide + 1}</a> <FontAwesomeIcon icon={faChevronRight} size={25} style={{display: 'inline-block', verticalAlign: 'middle'}} /></a>
-                        <div style={{textAlign: 'left', display: 'inline-block', verticalAlign: 'top'}}>
-                            <a className="text shareholder info header"> What industry does this company operate in?</a>
-                            <br />
-                            <br />
-                                <div style={{position: 'absolute'}}>
-                                    <button onClick={this.displayDropdown} style={{borderBottomLeftRadius: (this.state.displayDropdown) ? "0vh" : "1vh", borderBottomRightRadius: (this.state.displayDropdown) ? "0vh" : "1vh"}} className="button shareholder dropdown">{(this.state.questions.industry) ? this.state.questions.industry : "Select Industry"} <FontAwesomeIcon icon={(this.state.displayDropdown) ? faChevronUp : faChevronDown} style={{marginLeft: '1vw'}} /></button>
-                                    <div
-                                        style={{
-                                            position: 'absolute',
-                                            backgroundColor: "white",
-                                            visibility: (this.state.displayDropdown) ? "visible" : "hidden",
-                                            height: '20vh',
-                                            overflowY: "scroll",
-                                            width: '20vw'
-                                        }}
-                                    >
-                                        {getIndustriesDropdownElements()}
-                                    </div>
-                                    <br />
-                                    <br />
-                                    <button onClick={(e) => { this.onQuestionSubmit(e, "industry") }} type="submit" className="button shareholder info continue">Continue <FontAwesomeIcon icon={faArrowDown} /></button>
-                                    <button onClick={this.slideBack} className="button shareholder info continue" style={{marginLeft: '1vw', backgroundColor: "lightgray", color: 'black'}}>Back <FontAwesomeIcon icon={faArrowUp} /></button>
-                                </div>
-                        </div>
-                    </div>
-                    <div className="container shareholder slide content">
-                        <a className="text header indicator"><a style={{fontSize: '3vh', display: 'inline-block', verticalAlign: 'middle'}}>{this.state.currentSlide + 1}</a> <FontAwesomeIcon icon={faChevronRight} size={25} style={{display: 'inline-block', verticalAlign: 'middle'}} /></a>
-                        <div style={{textAlign: 'left', display: 'inline-block', verticalAlign: 'top'}}>
-                            <a className="text shareholder info header"> What type of entity is this company?</a>
-                            <br />
-                            <br />
-                                <div style={{position: 'absolute'}}>
-                                    <button onClick={this.displayDropdown} style={{borderBottomLeftRadius: (this.state.displayDropdown) ? "0vh" : "1vh", borderBottomRightRadius: (this.state.displayDropdown) ? "0vh" : "1vh"}} className="button shareholder dropdown">{(this.state.questions.type) ? this.state.questions.type : "Select Company Type"} <FontAwesomeIcon icon={(this.state.displayDropdown) ? faChevronUp : faChevronDown} style={{marginLeft: '1vw'}} /></button>
-                                    <div
-                                        style={{
-                                            position: 'absolute',
-                                            backgroundColor: "white",
-                                            visibility: (this.state.displayDropdown) ? "visible" : "hidden",
-                                            height: '20vh',
-                                            overflowY: "scroll",
-                                            width: '20vw'
-                                        }}
-                                    >
-                                        {getCompanyTypeDropdownElements()}
-                                    </div>
-                                    <br />
-                                    <br />
-                                    <button onClick={(e) => { this.onQuestionSubmit(e, "industry") }} type="submit" className="button shareholder info continue">Continue <FontAwesomeIcon icon={faArrowDown} /></button>
-                                    <button onClick={this.slideBack} className="button shareholder info continue" style={{marginLeft: '1vw', backgroundColor: "lightgray", color: 'black'}}>Back <FontAwesomeIcon icon={faArrowUp} /></button>
-                                </div>
-                        </div>
-                    </div>
-                    <div className="container shareholder slide content">
-                        <a className="text header indicator"><a style={{fontSize: '3vh', display: 'inline-block', verticalAlign: 'middle'}}>{this.state.currentSlide + 1}</a> <FontAwesomeIcon icon={faChevronRight} size={25} style={{display: 'inline-block', verticalAlign: 'middle'}} /></a>
-                        <div style={{textAlign: 'left'}}>
-                            <a className="text shareholder info header"> Share a link to your company website.</a>
-                            <br />
-                            <br />
-                            <input onKeyUp={(e) =>{ this.onTextChange(e, "link") }} value={this.state.questions.link} className="input shareholder info" placeholder="Type your answer here..."></input>
-                            <br />
-                            <br />
-                            <button onClick={(e) => {this.onQuestionSubmit(e, "link")}} className="button shareholder info continue">Finished <FontAwesomeIcon icon={faThumbsUp} /></button>
-                            <button onClick={this.slideBack} className="button shareholder info continue" style={{marginLeft: '1vw', backgroundColor: "lightgray", color: 'black'}}>Back <FontAwesomeIcon icon={faArrowUp} /></button>
-                        </div>
-                    </div>
-                </Carousel>        
+                </div>        
         );
     }
 }
@@ -470,10 +486,7 @@ class AdditionalQuestionsShareholder extends React.Component {
         this.functions.addCompany = this.addCompany;
         this.functions.removeCompany = this.removeCompany;
         this.functions.toggleModal = this.toggleModal;
-    }
-
-    componentDidUpdate() {
-        
+        this.functions.updateCompany = this.updateCompany;
     }
 
     toggleModal(companyIndex) {
@@ -486,12 +499,17 @@ class AdditionalQuestionsShareholder extends React.Component {
         this.setState({companies: newCompaniesList});
     }
 
-    updateCompany(index, newCompany) {
+    updateCompany(newCompany, index) {
         var currentCompanies = this.state.companies;
+        var currentCompany = this.state.companies[index];
+
+        newCompany.color = currentCompany.color;
 
         currentCompanies[index] = newCompany;
 
         this.setState({
+            editingIndex: null,
+            modal: false,
             companies: currentCompanies
         });
     }
@@ -547,25 +565,13 @@ class AdditionalQuestionsShareholder extends React.Component {
                     open={this.state.modal}
                 >
                     <div className="container shareholder modal">
-                        <div className="container shareholder modal interior">
-                            <div className="container shareholder modal header">
-                                <button
-                                    onClick={this.toggleModal}
-                                    className="button close modal"
-                                >
-                                    <FontAwesomeIcon icon={faTimes} />
-                                </button>
-                            </div>
-                            <div className="container shareholder modal content">
-                                <ShareholderInfoSlideShow functions={this.props.functions} state={this.state} editingIndex={this.state.editingIndex} />
-                            </div>
-                        </div>
+                        <ShareholderInfo functions={this.props.functions} state={this.state} editingIndex={this.state.editingIndex} />
                     </div>
                 </Modal>
                 <div className="container onboarding footer content">
                     <div style={{width: '100%', display: 'flex', justifyContent: 'space-between'}}>
-                        <a onClick={() => {this.props.functions.nextSlide(false, false, "shareholderInfo")}} className="text signin link"><FontAwesomeIcon icon={faLongArrowAltLeft} color={"#4F68B1"} /> Back to Full Name</a>
-                        <a onClick={() => {this.props.functions.nextSlide(false, false, "shareholderInfo")}} className="text signin link">Onward <FontAwesomeIcon icon={faLongArrowAltRight} color={"#AF6AAC"} /></a>
+                        <a onClick={() => {this.props.nextSlide(false, false, "shareholderInfo")}} className="text signin link"><FontAwesomeIcon icon={faLongArrowAltLeft} color={"#4F68B1"} /> Back to Full Name</a>
+                        <a onClick={() => {(this.state.companies.length > 0) ? this.props.nextSlide() : console.log("error")}} className="text signin link">Onward <FontAwesomeIcon icon={faLongArrowAltRight} color={"#AF6AAC"} /></a>
                     </div>
                 </div>
             </div>
@@ -594,8 +600,8 @@ class AdditionalQuestionsFullName extends React.Component {
     }
 
     onContinue() {
-        if(this.state.firstName != "" || this.state.firstName != undefined || this.state.firstName != null && this.state.lastName != "" || this.state.lastName != undefined || this.state.lastName != null) {
-            this.props.functions.nextSlide(true, this.state, "shareholderName");
+        if(this.state.firstName != "" && this.state.firstName != undefined && this.state.firstName != null && this.state.lastName != "" && this.state.lastName != undefined && this.state.lastName != null) {
+            this.props.nextSlide(true, this.state, "shareholderName");
         }
     }
 
@@ -608,17 +614,17 @@ class AdditionalQuestionsFullName extends React.Component {
                     <br />
                     <div>
                         <div className="icon container input" style={{border: '2px solid lightgray'}}>
-                            <input onChange={(e) => { this.onTextChange(e, "firstName") }} className="input create" style={{width: '20vw'}} placeholder="First Name" />
+                            <input onChange={(e) => { this.onTextChange(e, "firstName") }} className="input create" style={{width: '20vw'}} placeholder="First Name" style={{padding: '1vh', width: '25vw'}} />
                         </div>
                         <br />
                         <div className="icon container input" style={{border: '2px solid lightgray'}}>
-                            <input onChange={(e) => { this.onTextChange(e, "lastName") }} className="input create" style={{width: '20vw'}} placeholder="Last Name" />
+                            <input onChange={(e) => { this.onTextChange(e, "lastName") }} className="input create" style={{width: '20vw'}} placeholder="Last Name" style={{padding: '1vh', width: '25vw'}} />
                         </div>
                     </div>
                 </div>
                 <div className="container onboarding footer content">
                     <div style={{width: '100%', display: 'flex', justifyContent: 'space-between'}}>
-                        <a onClick={() => {this.props.functions.nextSlide(false, false, "shareholderName")}} className="text signin link"><FontAwesomeIcon icon={faLongArrowAltLeft} color={"#4F68B1"} /> Back to Account Type</a>
+                        <a onClick={() => {this.props.nextSlide(false, false, "shareholderName")}} className="text signin link"><FontAwesomeIcon icon={faLongArrowAltLeft} color={"#4F68B1"} /> Back to Account Type</a>
                         <a onClick={(e) => { this.onContinue() }} className="text signin link">Carry On <FontAwesomeIcon icon={faLongArrowAltRight} color={"#AF6AAC"} /></a>
                     </div>
                 </div>
@@ -640,11 +646,11 @@ class AccountType extends React.Component {
         }
 
         this.setType = this.setType.bind(this);
+        this.continue = this.continue.bind(this);
     }
 
     setType(type) {
         var obj = {
-            currentSlide: this.state.currentSlide,
             data: {
                 investor: (type == "investor") ? !this.state.data.investor : this.state.data.investor,
                 shareholder: (type == "shareholder") ? !this.state.data.shareholder : this.state.data.shareholder,
@@ -653,6 +659,20 @@ class AccountType extends React.Component {
         }
 
         this.setState(obj);
+    }
+
+    continue() {
+        var data = this.state.data;
+
+        var investorStatus = this.state.data.investor;
+        var shareholderStatus = this.state.data.shareholder;
+        var companyStatus = this.state.data.company;
+
+        if(investorStatus && !shareholderStatus && !companyStatus) {
+            this.props.functions.nextStep(true, this.state.data, "stepTwo");
+        } else if(shareholderStatus || companyStatus) {
+            this.props.nextSlide(true, this.state.data, "type");
+        }
     }
 
     render() {
@@ -667,7 +687,7 @@ class AccountType extends React.Component {
                         <br />
                         <br />
                         <br />
-                        <div className="container account types interior">
+                        <div className="container account types interior" style={{padding: '1vw'}}>
                             <button onClick={() => {this.setType("investor")}} className={(this.state.data.investor) ? "button account type selected" : "button account type"} style={{marginRight: '3vw'}}>
                                 <div style={{position: 'relative'}}>
                                     <img src={InvestorGraphic} className="icon account type" />
@@ -698,7 +718,7 @@ class AccountType extends React.Component {
                 <div className="container onboarding footer content">
                     <div style={{width: '100%', display: 'flex', justifyContent: 'space-between'}}>
                         <a onClick={() => {this.props.functions.nextStep(false, this.props.state.accountInfo, "stepOne")}} className="text signin link"><FontAwesomeIcon icon={faLongArrowAltLeft} color={"#4F68B1"} /> Back to Account Credentials</a>
-                        <a onClick={() => { (this.state.data.investor && !this.state.data.shareholder && !this.state.company) ? this.props.functions.nextStep(true, this.state.data, "stepTwo") : (this.state.data.shareholder || this.state.data.company) ? this.props.functions.nextSlide(true, this.state.data, "type") : this.toggleError()}} className="text signin link">Keep Going <FontAwesomeIcon icon={faLongArrowAltRight} color={"#AF6AAC"} /></a>
+                        <a onClick={() => { this.continue() }} className="text signin link">Keep Going <FontAwesomeIcon icon={faLongArrowAltRight} color={"#AF6AAC"} /></a>
                     </div>
                 </div>
             </div>
@@ -722,22 +742,20 @@ export default class StepTwo extends React.Component {
             companyInfo: false
         };
 
+        this.nextSlide = this.nextSlide.bind(this);
+
         this.functions = this.props.functions;
-        this.functions.nextSlide = this.nextSlide.bind(this);
+        this.functions.nextSlide = this.nextSlide;
     }
-
-    componentDidUpdate() {
-        console.log(this.state);
-    }
-
-    nextSlide(direction, data, key) {
+    
+    nextSlide(direction, data, key) {x
         var state = this.state;
 
         state[key] = data;
         state["currentSlide"] = (direction) ? this.state.currentSlide + 1 : this.state.currentSlide - 1;
 
         this.setState(state);
-    }
+    }   
 
     render() {
         return(
@@ -750,9 +768,9 @@ export default class StepTwo extends React.Component {
                     selectedItem={this.state.currentSlide}
                     showIndicators={false}
                 >
-                    {/* <AccountType state={this.state} functions={this.functions} /> */}
-                    {/* <AdditionalQuestionsFullName state={this.props.state} functions={this.props.functions} /> */}
-                    <AdditionalQuestionsShareholder state={this.props.state} functions={this.props.functions} />
+                    <AccountType state={this.state} functions={this.functions} nextSlide={this.nextSlide} />
+                    <AdditionalQuestionsFullName state={this.props.state} functions={this.functions} nextSlide={this.nextSlide} />
+                    <AdditionalQuestionsShareholder state={this.props.state} functions={this.functions} nextSlide={this.nextSlide} />
                 </Carousel>
             </div>
         )

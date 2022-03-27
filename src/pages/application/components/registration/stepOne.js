@@ -50,10 +50,6 @@ export default class StepOne extends React.Component {
 
         this.functions = this.props.functions;
     }
-
-    componentDidUpdate() {
-        console.log(this.state.identifierCheck)
-    }
     
     onIdentifierChange(e) {
         const value = e.target.value;
@@ -144,22 +140,16 @@ export default class StepOne extends React.Component {
                     <div className="container onboarding content interior">
                         <div className="container form onboarding">
                             <form onSubmit={this.onSubmit}>
-                                <a className="text signin header">Create Account</a>
-                                <br />
-                                <br />
-                                <br />
-                                <a className="text paragraph about register">Email or Username</a>
                                 <div ref={this.identifierRef} onFocus={() => {this.setState({focus: 1})}} className={(this.state.focus == 1) ? "input container selected" : "input container"}>
                                     <div className={"icon container input"}>
                                         <FontAwesomeIcon icon={faUser} color={"lightgray"} />
                                     </div>
-                                    <input onFocus={() => { this.onFocus(1) }} defaultValue={ (window.sessionStorage.getItem("getStartedIdentifier") != undefined) ? window.sessionStorage.getItem("getStartedIdentifier") : null} onChange={this.onIdentifierChange} className="input create" placeholder="enter an identifier..." />
+                                    <input onFocus={() => { this.onFocus(1) }} defaultValue={ (window.sessionStorage.getItem("getStartedIdentifier") != undefined) ? window.sessionStorage.getItem("getStartedIdentifier") : null} onChange={this.onIdentifierChange} className="input create" placeholder="enter an email or username" />
                                     <div className={"icon container input"}>
-                                        {(this.state.identifierCheck == true) ? <FontAwesomeIcon icon={faCheck} color={"#0ad48b"} /> : (this.state.identifierCheck == false) ? <FontAwesomeIcon icon={faTimes} color={"red"} /> : <FontAwesomeIcon icon={faCheck} color={"white"} />}
+                                        {(this.state.identifierCheck == true) ? <FontAwesomeIcon icon={faCheck} color={"#0ad48b"} /> : (this.state.identifierCheck == false) ? <FontAwesomeIcon icon={faTimes} color={"red"} /> : <FontAwesomeIcon icon={faCheck} color={"transparent"} />}
                                     </div>
                                 </div>
                                 <br />
-                                <a className="text paragraph about register">Set a Password</a>
                                 <div ref={this.password1Ref} onFocus={() => {this.setState({focus: 2})}} className={(this.state.focus == 2) ? "input container selected" : "input container"}>
                                     <div className={"icon container input"}>
                                         <FontAwesomeIcon icon={faLock} color={"lightgray"} />
@@ -170,12 +160,11 @@ export default class StepOne extends React.Component {
                                     </div>
                                 </div>
                                 <br />
-                                <a className="text paragraph about register">Re-enter Your Password</a>
                                 <div ref={this.password2Ref} onFocus={() => {this.setState({focus: 3})}} className={(this.state.focus == 3) ? "input container selected" : "input container"}>
                                     <div className={"icon container input"}>
                                         <FontAwesomeIcon icon={faLock} color={"lightgray"} />
                                     </div>
-                                    <input onChange={(e) => { this.onPasswordChange(2, e) }} className="input create" type="password" placeholder="reenter that password" />
+                                    <input onChange={(e) => { this.onPasswordChange(2, e) }} className="input create" type="password" placeholder="re-enter password" />
                                     <div className={"icon container input"}>
                                         {(this.state.passwordCheck == true) ? <FontAwesomeIcon icon={faCheck} color={"#0ad48b"} /> : (this.state.passwordCheck == false) ? <FontAwesomeIcon icon={faTimes} color={"red"} /> : <FontAwesomeIcon icon={faTimes} color={"transparent"} />}
                                     </div>

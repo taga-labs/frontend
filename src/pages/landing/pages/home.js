@@ -167,7 +167,7 @@ export default class LandingHome extends React.Component {
                                         Taga is a mutually beneficial ecosystem where private companies and public capital can interact seamlessly.
                                     </p>
                                     <div className="container interactions main">
-                                        <input onChange={(e) => {this.setState({identifier: e.target.value})}} className="input main" placeholder="rhendricks@piper.net"></input>
+                                        <input onChange={(e) => {this.setState({identifier: e.target.value})}} className="input main" placeholder="you@example.com"></input>
                                         <button onClick={() => {this.goToGetStarted()}} className="button nav">Get Started {(!this.state.mobileRescale) ?<FontAwesomeIcon icon={faLongArrowAltRight} /> : <></> }</button>
                                     </div>
                                 </div>

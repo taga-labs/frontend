@@ -111,18 +111,16 @@ class SignIn extends React.Component {
                                 <br />
                                 <br />
                                 <form onSubmit={this.onSubmit}>
-                                <a className="text paragraph about register">Email or Username</a>
                                 <div ref={this.identifierRef} onFocus={() => {this.setState({focus: 1})}} className={(this.state.focus == 1) ? "input container selected" : "input container"}>
                                     <div className={"icon container input"}>
                                         <FontAwesomeIcon icon={faUser} color={"lightgray"} />
                                     </div>
-                                    <input onChange={this.onIdentifierChange} className="input create" placeholder="enter an identifier..." />
+                                    <input onChange={this.onIdentifierChange} className="input create" placeholder="enter an email or username..." />
                                     <div className={"icon container input"}>
                                         {(this.state.identifierCheck == true) ? <FontAwesomeIcon icon={faCheck} color={"#0ad48b"} /> : (this.state.identifierCheck == false) ? <FontAwesomeIcon icon={faTimes} color={"red"} /> : <FontAwesomeIcon icon={faCheck} color={"transparent"} />}
                                     </div>
                                 </div>
                                 <br />
-                                <a className="text paragraph about register">Your Password</a>
                                 <div ref={this.password1Ref} onFocus={() => {this.setState({focus: 2})}} className={(this.state.focus == 2) ? "input container selected" : "input container"}>
                                     <div className={"icon container input"}>
                                         <FontAwesomeIcon icon={faLock} color={"lightgray"} />
