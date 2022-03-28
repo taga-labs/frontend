@@ -11,15 +11,10 @@ import {
 
 // Page module imports
 import {
-    LandingHome,
-    LandingAbout
-} from './pages/landing';
-
-import {
-    SignIn,
-    Registration
-} from './pages/application';
-
+    Home as LandingHome,
+    About as LandingAbout,
+    Docs as LandingDocs
+} from './components/app/landing';
 // Init app variable
 let App;
 
