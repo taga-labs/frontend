@@ -168,7 +168,7 @@ export default class LandingHome extends React.Component {
                                     </p>
                                     <div className="container interactions main">
                                         <input onChange={(e) => {this.setState({identifier: e.target.value})}} className="input main" placeholder="you@example.com"></input>
-                                        <button onClick={() => {this.goToGetStarted()}} className="button nav">Get Started {(!this.state.mobileRescale) ?<FontAwesomeIcon icon={faLongArrowAltRight} /> : <></> }</button>
+                                        <button onClick={() => {this.goToGetStarted()}} className="button nav" style={{fontSize: '2vh'}}>Get Started {(!this.state.mobileRescale) ?<FontAwesomeIcon icon={faLongArrowAltRight} /> : <></> }</button>
                                     </div>
                                 </div>
                                 {(!this.state.mobileRescale) ? <img src={MainVectorGraphic} className="main image" /> : <></>}
@@ -251,9 +251,11 @@ export default class LandingHome extends React.Component {
                         <a href="/docs" className="text nav links">Products</a>
                         <a href="/docs" className="text nav links">Docs</a>
                         <a href="/docs" className="text nav links">About</a>
-                        <button onClick={() => {window.location.href="/get-started"}} className="button nav">
-                            <FontAwesomeIcon icon={faRocket} style={{marginRight: '0.5vw'}} />
-                            Register
+                        <button onClick={() => {window.location.href="/get-started"}} className="pushable">
+                            <span className="">
+                                <FontAwesomeIcon icon={faRocket} style={{marginRight: '0.5vw'}} />
+                                Register
+                            </span>
                         </button>
                     </div>
                 </div>

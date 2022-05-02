@@ -20,15 +20,43 @@ import {
     Registration
 } from './pages/application';
 
+import {
+    ApplicationHome
+} from './pages/application';
+
 // Init app variable
 let App;
 
 // Get domains used in request
-let uri = window.location.host;
-let domainArray = uri.split(".");
+let domain = window.location.host;
+let path = window.location.pathname;
+
+let domainArray = domain.split(".");
+
+// Dev array for local testing subdomain routing
+let pathArray = path.split("/");
 
 // If requesting 'app' subdomain
 if(domainArray.length > 1 && domainArray[0] == "app") {
+
+    App = class AppRouter extends React.Component {
+        constructor(props) {
+            super(props)
+        }
+
+        render() {
+            return(
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/app"  element={<ApplicationHome />} />
+                    </Routes>
+                </BrowserRouter>
+            )
+        }
+    }
+} 
+
+if(pathArray.length > 0 && pathArray[1] == "app") {
     App = class AppRouter extends React.Component {
         constructor(props) {
             super(props)
@@ -85,6 +113,7 @@ else {
                         <Route path="/about" element={<LandingAbout />} />
                         <Route path="/signin" element={<SignIn />} />
                         <Route path="/get-started" element={<Registration />} />
+                        <Route path="/app" element={<ApplicationHome />} />
                     </Routes>
                 </BrowserRouter>
             )
