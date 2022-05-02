@@ -242,6 +242,9 @@ class ShareholderInfo extends React.Component {
             }
         };
 
+        console.log(this.props.editingIndex);
+        console.log(this.props.functions)
+
         this.onQuestionSubmit = this.onQuestionSubmit.bind(this);
         this.onTextChange = this.onTextChange.bind(this);
         this.displayDropdown = this.displayDropdown.bind(this);
@@ -293,19 +296,19 @@ class ShareholderInfo extends React.Component {
     render() {
         const getSizeDropdownElements = () => {
             return this.state.dropdownValues.size.map((val, index) => {
-                return <button onClick={(e) => { this.onDropdownElementClick(e, "size") }} className="button shareholder dropdown element" value={index}>{val}</button>;
+                return <button key={index} onClick={(e) => { this.onDropdownElementClick(e, "size") }} className="button shareholder dropdown element" value={index}>{val}</button>;
             });
         }
 
         const getIndustriesDropdownElements = () => {
             return this.state.dropdownValues.industry.map((val, index) => {
-                return <button onClick={(e) => { this.onDropdownElementClick(e, "industry") }} className="button shareholder dropdown element" value={index}>{val}</button>;
+                return <button key={index} onClick={(e) => { this.onDropdownElementClick(e, "industry") }} className="button shareholder dropdown element" value={index}>{val}</button>;
             });
         }
 
         const getCompanyTypeDropdownElements = () => {
             return this.state.dropdownValues.type.map((val, index) => {
-                return <button onClick={(e) => { this.onDropdownElementClick(e, "type") }} className="button shareholder dropdown element" value={index}>{val}</button>;
+                return <button key={index} onClick={(e) => { this.onDropdownElementClick(e, "type") }} className="button shareholder dropdown element" value={index}>{val}</button>;
             });
         }
 
@@ -313,7 +316,7 @@ class ShareholderInfo extends React.Component {
                 <div className="container shareholder modal interior">
                     <div className="container shareholder modal header">
                         <button
-                            onClick={(this.props.editingIndex) ? this.props.functions.toggleModal : () => { this.props.functions.updateCompany(this.state.questions, this.props.editingIndex) }}
+                            onClick={(this.props.editingIndex) ? this.props.functions.toggleModal() : () => { this.props.functions.updateCompany(this.state.questions, this.props.editingIndex) }}
                             className="button close modal"
                         >
                             <FontAwesomeIcon icon={faTimes} />
@@ -489,7 +492,12 @@ class AdditionalQuestionsShareholder extends React.Component {
         this.functions.updateCompany = this.updateCompany;
     }
 
+    componentDidUpdate() {
+        console.log(this.state);
+    }
+
     toggleModal(companyIndex) {
+        console.log(this.state);
         this.setState({modal: !this.state.modal, editingIndex: companyIndex});
     }
 
@@ -748,7 +756,7 @@ export default class StepTwo extends React.Component {
         this.functions.nextSlide = this.nextSlide;
     }
     
-    nextSlide(direction, data, key) {x
+    nextSlide(direction, data, key) {
         var state = this.state;
 
         state[key] = data;

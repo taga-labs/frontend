@@ -1,6 +1,6 @@
 .button.nav {
     padding: 2vh;
-    font-size: 2vh;
+    font-size: 1.5vh;
     background-color: transparent;
     border: none;
     outline: none;
@@ -15,6 +15,29 @@
 .button.nav:hover {
     transform: translateY(-5px);
 }
+
+.pushable {  
+    background:#4F68B1;
+    border-radius: 12px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 2px;
+    border-radius: 1000px;
+  }
+  .front {
+    display: block;
+    padding: 12px 42px;
+    border-radius: 1000px;
+    font-size: 2vh;
+    background: linear-gradient(to right, #4F68B1, #AF6AAC);
+    color: white;
+    transform: translateY(-6px);
+  }
+
+  .pushable:active .front {
+    transform: translateY(-2px);
+  }
 
 .input.main {
     padding-top: 2vh;
