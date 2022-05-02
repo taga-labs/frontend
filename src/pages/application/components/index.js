@@ -5,6 +5,7 @@ import RegistrationStepThree from './registration/stepThree';
 import RegistrationFinished from './registration/finished';
 
 import AppNav from './general/nav';
+import AppHome from './home';
 
 export {
     RegistrationStepNav,
@@ -13,5 +14,6 @@ export {
     RegistrationStepThree,
     RegistrationFinished,
 
-    AppNav
+    AppNav,
+    AppHome
 }
