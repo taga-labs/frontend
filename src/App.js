@@ -9,16 +9,9 @@ import {
     Route
 } from "react-router-dom";
 
-// Page module imports
 import {
-    LandingHome,
-    LandingAbout
-} from './pages/landing';
-
-import {
-    SignIn,
-    Registration
-} from './pages/application';
+    LandingHome
+} from './pages/index';
 
 // Init app variable
 let App;
@@ -29,21 +22,21 @@ let domainArray = uri.split(".");
 
 // If requesting 'app' subdomain
 if(domainArray.length > 1 && domainArray[0] == "app") {
-    App = class AppRouter extends React.Component {
-        constructor(props) {
-            super(props)
-        }
+    // App = class AppRouter extends React.Component {
+    //     constructor(props) {
+    //         super(props)
+    //     }
 
-        render() {
-            return(
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<LandingHome />} />
-                    </Routes>
-                </BrowserRouter>
-            )
-        }
-    }
+    //     render() {
+    //         return(
+    //             <BrowserRouter>
+    //                 <Routes>
+    //                     <Route path="/" element={<LandingHome />} />
+    //                 </Routes>
+    //             </BrowserRouter>
+    //         )
+    //     }
+    // }
 } 
 
 // If arbitrary subdomain requested
@@ -58,11 +51,6 @@ else if(domainArray.length > 1 && domainArray[0] != "app") {
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<LandingHome />} />
-                        <Route path="/about" element={<LandingAbout />} />
-                        <Route path="/signin" element={<SignIn />} />
-                        <Route path="/get-started" element={<Registration />}>
-                            <Route path=":step" element={<Registration />} />
-                        </Route>
                     </Routes>
                 </BrowserRouter>
             )
@@ -82,9 +70,9 @@ else {
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<LandingHome />} />
-                        <Route path="/about" element={<LandingAbout />} />
+                        {/* <Route path="/about" element={<LandingAbout />} />
                         <Route path="/signin" element={<SignIn />} />
-                        <Route path="/get-started" element={<Registration />} />
+                        <Route path="/get-started" element={<Registration />} /> */}
                     </Routes>
                 </BrowserRouter>
             )
