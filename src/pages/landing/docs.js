@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-export default class LandingProducts extends React.Component {
+export default class Docs extends React.Component {
     constructor(props) {
         super(props)
     }

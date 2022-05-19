@@ -1,8 +1,8 @@
-// React imports
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-export default class LandingHome extends React.Component {
+import '../../assets/production.css';
+
+export default class Home extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -10,7 +10,7 @@ export default class LandingHome extends React.Component {
     render() {
         return(
             <div className="container">
-                asd
+
             </div>
         )
     }
