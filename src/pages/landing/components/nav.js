@@ -35,7 +35,7 @@ export default class LandingHome extends React.Component {
     render() {
         return(
             <div className="container nav">
-                <div className="container animated nav">
+                <div className="container nav interior">
                     <div className="container company">
                         <a href="/" style={{textDecoration: 'none', color: 'black'}}>
                             <img src={LogoDarkBG} className="icon" />

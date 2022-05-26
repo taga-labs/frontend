@@ -43,7 +43,7 @@
 }
 
 /* Container for nav logo and company name */
-.container.animated.nav {
+.container.nav.interior {
     width: 75vw;
     display: flex;
     height: max-content;
